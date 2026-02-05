@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding AI Privacy: What Data Do You Share? - AI Made Simple</title>
+    <meta name="description" content="A clear guide to AI privacy. Learn what happens to your data when you use ChatGPT, how to protect your privacy, and what you should never share with AI.">
+    <meta property="og:title" content="Understanding AI Privacy: What Data Do You Share?">
+    <meta property="og:description" content="A clear guide to AI privacy. Learn what happens to your data when you use ChatGPT, how to protect your privacy, and what you should never share with AI.">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .back-link {
+            font-family: 'Inter', sans-serif;
+            color: #1a365d;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            color: #ed8936;
+        }
+        
+        h1 {
+            font-family: 'Inter', sans-serif;
+            color: #1a365d;
+            font-size: 36px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .meta {
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        h2 {
+            font-family: 'Inter', sans-serif;
+            color: #1a365d;
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            color: #2d3748;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        strong {
+            color: #1a365d;
+        }
+        
+        .callout {
+            background: #fef5e7;
+            border-left: 4px solid #ed8936;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+        }
+        
+        .example {
+            background: #edf2f7;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 25px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+        }
+        
+        .share-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .share-section p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #718096;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ed8936;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .cta-button:hover {
+            background: #dd6b20;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            body {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to AI Made Simple</a>
+        
+        <h1>Understanding AI Privacy: What Data Do You Share?</h1>
+        
+        <div class="meta">By Sam Digital · February 2026</div>
+        
+        <p>You're thinking about using ChatGPT or another AI tool, but there's a nagging question in the back of your mind: <em>What happens to what I type?</em></p>
+        
+        <p>It's a smart question. In an age where companies track everything from your shopping habits to your location, it's only natural to wonder about privacy when using AI tools.</p>
+        
+        <p>The good news is that AI privacy isn't as scary as you might think—but there are important things you need to know to protect yourself. In this guide, I'll explain exactly what happens to your data, what AI companies collect, and how to use these tools safely.</p>
+        
+        <p>No technical jargon. No paranoia. Just clear, practical information so you can make informed choices.</p>
+        
+        <h2>What Happens When You Type into ChatGPT?</h2>
+        
+        <p>Let's start with the basics. When you type a message into ChatGPT, here's what happens:</p>
+        
+        <ol>
+            <li><strong>Your message is sent to OpenAI's servers</strong> (the company that makes ChatGPT)</li>
+            <li><strong>The AI processes your message</strong> and generates a response</li>
+            <li><strong>That conversation is stored</strong> in your account history</li>
+            <li><strong>OpenAI may review conversations</strong> to improve the system</li>
+        </ol>
+        
+        <p>Think of it like sending an email. Once you hit send, that message exists on a server somewhere. It's not just floating in the ether—it's stored.</p>
+        
+        <p>This doesn't mean your conversations are displayed publicly or shared with other users. They're not. But they're also not completely private in the way a diary locked in your drawer would be.</p>
+        
+        <div class="callout">
+            <p><strong>The key principle:</strong> Anything you type into an AI chatbot should be treated as if you're writing it in a semi-public space. Don't share anything you wouldn't be comfortable with a stranger potentially seeing.</p>
+        </div>
+        
+        <h2>What Data Do AI Companies Collect?</h2>
+        
+        <p>Different AI services collect different information. Let's break down what the major ones gather:</p>
+        
+        <h3>ChatGPT (OpenAI)</h3>
+        
+        <p><strong>They collect:</strong></p>
+        <ul>
+            <li>Your account information (email, name if provided)</li>
+            <li>All of your conversations with ChatGPT</li>
+            <li>Technical data (your IP address, device type, browser)</li>
+            <li>Payment information if you subscribe to ChatGPT Plus</li>
+            <li>Usage patterns (how often you use it, what features you use)</li>
+        </ul>
+        
+        <p><strong>What they do with it:</strong></p>
+        <ul>
+            <li>Store it on secure servers</li>
+            <li>May use conversations to train and improve AI (unless you opt out)</li>
+            <li>May have human reviewers read sample conversations for quality control</li>
+            <li>Keep conversations for 30 days after deletion (for safety/abuse prevention)</li>
+        </ul>
+        
+        <h3>Google Gemini</h3>
+        
+        <p><strong>They collect:</strong></p>
+        <ul>
+            <li>Your Google account information</li>
+            <li>Conversations with Gemini</li>
+            <li>Related data from other Google services (if integrated)</li>
+            <li>Location data (if you grant permission)</li>
+            <li>Voice data (if you use voice features)</li>
+        </ul>
+        
+        <p><strong>What they do with it:</strong></p>
+        <ul>
+            <li>Store conversations for up to 72 months (3 years)</li>
+            <li>May use data to improve Google services</li>
+            <li>Human reviewers may read conversations</li>
+            <li>Can integrate with your Gmail, Calendar, and other Google apps (if you enable this)</li>
+        </ul>
+        
+        <h3>Microsoft Copilot</h3>
+        
+        <p><strong>They collect:</strong></p>
+        <ul>
+            <li>Your Microsoft account details</li>
+            <li>Conversation history</li>
+            <li>Data from Microsoft services you use</li>
+            <li>Search queries and browsing context</li>
+        </ul>
+        
+        <p><strong>What they do with it:</strong></p>
+        <ul>
+            <li>Store conversations tied to your account</li>
+            <li>May use for AI improvement</li>
+            <li>Integrate with Microsoft 365 if you use those services</li>
+        </ul>
+        
+        <h2>How to Protect Your Privacy</h2>
+        
+        <p>Now that you know what's collected, let's talk about how to protect yourself. You don't need to avoid AI entirely—you just need to be smart about how you use it.</p>
+        
+        <h3>Never Share Sensitive Personal Information</h3>
+        
+        <p>This is the golden rule. Do not type into AI:</p>
+        
+        <ul>
+            <li><strong>Passwords or PINs</strong></li>
+            <li><strong>Credit card numbers</strong></li>
+            <li><strong>Social Security numbers or tax file numbers</strong></li>
+            <li><strong>Bank account details</strong></li>
+            <li><strong>Medical record numbers</strong></li>
+            <li><strong>Driver's license numbers</strong></li>
+            <li><strong>Passport numbers</strong></li>
+        </ul>
+        
+        <p>If you need help with something involving these details, describe the situation generally without including the actual numbers or passwords.</p>
+        
+        <div class="example">
+            <strong>Bad:</strong> "My password is BlueSky123 and I can't log into my bank"<br><br>
+            <strong>Good:</strong> "I'm having trouble logging into my online banking. What might be wrong?"
+        </div>
+        
+        <h3>Be Careful with Personal Details</h3>
+        
+        <p>You can use AI without sharing your life story. When asking for help, you can be vague about identifying details:</p>
+        
+        <div class="example">
+            <strong>Instead of:</strong> "I'm Margaret Thompson, 72, living at 45 Oak Street in Melbourne"<br><br>
+            <strong>Say:</strong> "I'm a retiree in Melbourne"
+        </div>
+        
+        <p>The AI doesn't need to know your exact name, age, or address to help you.</p>
+        
+        <h3>Use Privacy Settings in ChatGPT</h3>
+        
+        <p>ChatGPT has privacy controls you should know about:</p>
+        
+        <p><strong>To turn off chat history and training:</strong></p>
+        <ol>
+            <li>Click your name in the bottom-left corner</li>
+            <li>Go to "Settings"</li>
+            <li>Click "Data Controls"</li>
+            <li>Turn off "Chat history & training"</li>
+        </ol>
+        
+        <p>When this is off:</p>
+        <ul>
+            <li>Your conversations won't be saved in your history</li>
+            <li>They won't be used to train the AI</li>
+            <li>They'll be deleted after 30 days (kept briefly for safety/abuse monitoring)</li>
+        </ul>
+        
+        <p><strong>The trade-off:</strong> You won't be able to see past conversations, so you can't refer back to them later. For many people, this is worth the privacy.</p>
+        
+        <h3>Use Privacy Settings in Google Gemini</h3>
+        
+        <p>For Gemini:</p>
+        <ol>
+            <li>Go to <strong>myactivity.google.com</strong></li>
+            <li>Find "Gemini Apps Activity"</li>
+            <li>Click "Turn off" if you don't want conversations saved</li>
+            <li>You can also delete past conversations from here</li>
+        </ol>
+        
+        <p>You can also turn off "Web & App Activity" in your Google account, though this affects other Google services too.</p>
+        
+        <h3>Delete Old Conversations</h3>
+        
+        <p>Regularly clean up conversations you no longer need, especially if they contain any personal information.</p>
+        
+        <p><strong>In ChatGPT:</strong> Hover over a conversation in the sidebar and click the trash icon.</p>
+        
+        <p><strong>In Gemini:</strong> Go to your Google Activity page and delete specific conversations or everything at once.</p>
+        
+        <h2>What NOT to Share with AI</h2>
+        
+        <p>Let's be crystal clear about what should never go into an AI chat:</p>
+        
+        <h3>Financial Information</h3>
+        <ul>
+            <li>Bank account numbers</li>
+            <li>Credit card details</li>
+            <li>Investment account information</li>
+            <li>Tax returns with specific numbers</li>
+        </ul>
+        
+        <h3>Medical Information</h3>
+        <ul>
+            <li>Full medical histories with identifying details</li>
+            <li>Prescription details with pharmacy information</li>
+            <li>Health insurance numbers</li>
+        </ul>
+        
+        <p><em>You can ask general health questions</em> ("What are symptoms of arthritis?") but don't include: "I'm John Smith, DOB 5/12/1950, patient ID 12345..."</p>
+        
+        <h3>Authentication Details</h3>
+        <ul>
+            <li>Passwords</li>
+            <li>Security question answers</li>
+            <li>Two-factor authentication codes</li>
+            <li>PINs</li>
+        </ul>
+        
+        <h3>Other People's Private Information</h3>
+        <ul>
+            <li>Friends' or family members' addresses, phone numbers, or personal details</li>
+            <li>Work colleagues' sensitive information</li>
+            <li>Anyone else's private data</li>
+        </ul>
+        
+        <p>Just because <em>you're</em> comfortable sharing something doesn't mean others would be.</p>
+        
+        <div class="callout">
+            <p><strong>Good rule of thumb:</strong> If you wouldn't want it read aloud in a public place, don't type it into AI.</p>
+        </div>
+        
+        <h2>Private vs. Commercial AI: What's the Difference?</h2>
+        
+        <p>There's an important distinction to understand:</p>
+        
+        <h3>Commercial AI (ChatGPT, Gemini, Copilot)</h3>
+        <ul>
+            <li>Free or cheap to use</li>
+            <li>Data may be used to improve the AI</li>
+            <li>Conversations stored on company servers</li>
+            <li>Some human review possible</li>
+            <li><strong>Good for:</strong> General questions, learning, creative writing, casual use</li>
+        </ul>
+        
+        <h3>Private AI Solutions</h3>
+        <ul>
+            <li>Usually cost money (enterprise solutions)</li>
+            <li>Your data is not used for training</li>
+            <li>Stronger privacy guarantees</li>
+            <li>Often used by businesses, medical practices, law firms</li>
+            <li><strong>Good for:</strong> Professional use with sensitive data</li>
+        </ul>
+        
+        <p>For personal, everyday use, commercial AI services are fine—you just need to follow the privacy guidelines we've discussed. If you're a business handling customer data, you'd want private AI solutions with proper contracts and guarantees.</p>
+        
+        <h2>Privacy Regulations: EU and Australia</h2>
+        
+        <p>Different countries have different privacy laws that affect how AI companies operate.</p>
+        
+        <h3>European Union (GDPR)</h3>
+        
+        <p>If you're in the EU, you have strong rights under GDPR:</p>
+        <ul>
+            <li><strong>Right to access:</strong> Request all data a company has about you</li>
+            <li><strong>Right to deletion:</strong> Request your data be permanently deleted</li>
+            <li><strong>Right to opt-out:</strong> Refuse data processing for training purposes</li>
+            <li><strong>Right to portability:</strong> Get your data in a transferable format</li>
+        </ul>
+        
+        <p>Major AI companies must comply with GDPR for EU users. You can exercise these rights through their privacy settings or by contacting their data protection officers.</p>
+        
+        <h3>Australia (Privacy Act)</h3>
+        
+        <p>Australian users have privacy protections under the Privacy Act 1988:</p>
+        <ul>
+            <li>Companies must handle your personal information responsibly</li>
+            <li>You can request access to your data</li>
+            <li>You can request corrections to inaccurate information</li>
+            <li>You can complain to the Office of the Australian Information Commissioner (OAIC)</li>
+        </ul>
+        
+        <p>While not as comprehensive as GDPR, Australian privacy law still gives you recourse if companies mishandle your information.</p>
+        
+        <h3>Other Regions</h3>
+        
+        <p>Privacy laws vary by country. Check your local regulations, but the safe practices in this guide apply universally: don't share sensitive information, use privacy settings, and be mindful of what you type.</p>
+        
+        <h2>Practical Privacy Tips for Everyday Use</h2>
+        
+        <h3>Create a Separate Email</h3>
+        
+        <p>Consider using a separate email address for AI services—not your primary email. This creates a layer of separation from your main digital identity.</p>
+        
+        <h3>Use Descriptive Scenarios Instead of Personal Details</h3>
+        
+        <p>You can get the same helpful answers without revealing personal information:</p>
+        
+        <div class="example">
+            <strong>Instead of:</strong> "I'm 68, diabetic, taking metformin, and experiencing fatigue. What should I do?"<br><br>
+            <strong>Say:</strong> "What are common causes of fatigue in older adults with type 2 diabetes?"
+        </div>
+        
+        <p>You'll get general information that's just as useful without linking it to your identity.</p>
+        
+        <h3>Review Your Conversation History Periodically</h3>
+        
+        <p>Once a month, glance through your chat history and delete anything that contains personal information you'd rather not keep stored.</p>
+        
+        <h3>Use Incognito/Private Browsing</h3>
+        
+        <p>If you're asking something particularly sensitive, use your browser's private/incognito mode. You'll need to log in each time, but it adds a layer of privacy.</p>
+        
+        <h3>Understand the Risks for Different Types of Use</h3>
+        
+        <ul>
+            <li><strong>Low risk:</strong> "How do I make bread?" "Explain photosynthesis"</li>
+            <li><strong>Medium risk:</strong> "Help me write a resume" (use fake names/details)</li>
+            <li><strong>High risk:</strong> Anything involving real financial, medical, or legal situations with identifying details</li>
+        </ul>
+        
+        <h2>Teaching Kids and Grandkids About AI Privacy</h2>
+        
+        <p>If your grandchildren are using AI for homework or curiosity, teach them these simple rules:</p>
+        
+        <ol>
+            <li><strong>"Never tell AI where you live, your full name, or your school's name"</strong></li>
+            <li><strong>"Don't share passwords or phone numbers"</strong></li>
+            <li><strong>"If you're not sure if something is okay to share, ask an adult"</strong></li>
+        </ol>
+        
+        <p>Young people are often more trusting of technology. Help them understand that AI, while helpful, isn't a private diary.</p>
+        
+        <h2>The Bottom Line on AI Privacy</h2>
+        
+        <p>AI tools like ChatGPT and Gemini are incredibly useful—and they can be used safely if you're mindful about what you share.</p>
+        
+        <p><strong>The core principles:</strong></p>
+        
+        <ul>
+            <li>Treat AI chats like semi-public conversations</li>
+            <li>Never share passwords, financial details, or government IDs</li>
+            <li>Use privacy settings to limit data collection</li>
+            <li>Be vague with personal details when possible</li>
+            <li>Delete sensitive conversations when you're done</li>
+            <li>Remember: convenient doesn't mean private</li>
+        </ul>
+        
+        <p>You don't need to be paranoid, but you do need to be thoughtful. The same common sense you use with email, social media, and phone calls applies to AI: think before you share.</p>
+        
+        <p>AI is a tool. Use it wisely, protect your privacy, and enjoy the benefits without unnecessary risk.</p>
+        
+        <div class="share-section">
+            <p>Found this helpful? More beginner-friendly AI guides coming soon.</p>
+            <a href="../index.html" class="cta-button">Read More Articles</a>
+        </div>
+    </div>
+</body>
+</html>
