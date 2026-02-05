@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Here — AI Made Simple</title>
+    <meta name="description" content="Brand new to AI? Start here. A 5-minute guide to understanding and using artificial intelligence — no tech experience needed.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1a365d;
+            --blue-light: #2b6cb0;
+            --orange: #ed8936;
+            --green: #38a169;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-600: #718096;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        h1 {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            font-size: 36px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: var(--gray-600);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        h2 {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        p { margin-bottom: 20px; }
+        .step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        .step-number {
+            background: var(--blue);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-content h3 {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .step-content p { font-size: 16px; margin-bottom: 8px; }
+        .time-badge {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .try-box {
+            background: #edf2f7;
+            border-left: 4px solid var(--orange);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+        }
+        .try-box strong { color: var(--blue); }
+        .reassurance {
+            background: #f0fff4;
+            border: 2px solid #c6f6d5;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .reassurance .emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .reassurance h3 {
+            font-family: 'Inter', sans-serif;
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+        .reassurance p { font-size: 16px; color: var(--gray-700); margin-bottom: 0; }
+        .next-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .next-step {
+            padding: 15px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+        .next-step:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        .next-step h4 {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .next-step p {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 0;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            h1 { font-size: 28px; }
+            .step { flex-direction: column; gap: 10px; }
+            .next-steps { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <h1>Start Here 👋</h1>
+        <p class="subtitle">Brand new to AI? This page is for you. Five minutes from now, you'll understand what AI is and how to use it.</p>
+
+        <div class="reassurance">
+            <span class="emoji">💛</span>
+            <h3>Before We Start</h3>
+            <p>You can't break anything. You don't need to download anything dangerous. You don't need to be "tech-savvy." If you can send a text message, you can use AI. Promise.</p>
+        </div>
+
+        <h2>Your First 5 Minutes with AI</h2>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Open Your Browser <span class="time-badge">30 seconds</span></h3>
+                <p>Open whatever you use to go on the internet — Chrome, Safari, Edge, Firefox. In the address bar at the top, type:</p>
+                <div class="try-box"><strong>chat.openai.com</strong></div>
+                <p>Press Enter. That's it.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Create a Free Account <span class="time-badge">60 seconds</span></h3>
+                <p>Click <strong>"Sign up"</strong> (not "Log in").</p>
+                <p>Enter your email address. Create a password. Check your email for a verification link and click it.</p>
+                <p>That's your account. Free forever for the basic version.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Say Hello <span class="time-badge">30 seconds</span></h3>
+                <p>You'll see a text box at the bottom of the screen. Type:</p>
+                <div class="try-box"><strong>"Hello! I'm new to AI. Can you explain what you are and what you can help me with?"</strong></div>
+                <p>Press Enter (or click the send button). Read the response. You're now talking to AI.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>Try Something Useful <span class="time-badge">60 seconds</span></h3>
+                <p>Now try something practical. Pick one:</p>
+                <div class="try-box">
+                    <strong>✉️ Email help:</strong> "Write a polite email to my internet company about a billing error."<br><br>
+                    <strong>🍳 Dinner help:</strong> "I have chicken, rice, and broccoli. What can I make for dinner?"<br><br>
+                    <strong>✈️ Trip help:</strong> "Suggest a 3-day weekend getaway from Perth for a couple who love food and nature."<br><br>
+                    <strong>📚 Learning:</strong> "Explain what cryptocurrency is in simple terms."
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h3>Keep Talking <span class="time-badge">∞</span></h3>
+                <p>The conversation continues. Ask follow-up questions. Say "simpler please" if something's confusing. Say "try again" if you don't like the answer. AI has infinite patience.</p>
+            </div>
+        </div>
+
+        <div class="reassurance">
+            <span class="emoji">🎉</span>
+            <h3>Congratulations!</h3>
+            <p>You just used AI. That's all there is to it. Everything else is just getting better at asking questions.</p>
+        </div>
+
+        <h2>Three Safety Rules</h2>
+        <p>1. <strong>Don't share sensitive information</strong> — No bank details, passwords, or personal ID numbers.</p>
+        <p>2. <strong>Don't trust it blindly</strong> — AI sometimes makes confident mistakes. Verify important facts.</p>
+        <p>3. <strong>It's not a doctor/lawyer/adviser</strong> — Use it to prepare and understand, not to make critical decisions.</p>
+
+        <h2>What to Read Next</h2>
+        <div class="next-steps">
+            <a href="articles/what-is-chatgpt.html" class="next-step">
+                <h4>📖 What Is ChatGPT?</h4>
+                <p>The complete beginner's guide</p>
+            </a>
+            <a href="articles/chatgpt-prompts-beginners.html" class="next-step">
+                <h4>💬 25 Essential Prompts</h4>
+                <p>Copy-paste ready for daily use</p>
+            </a>
+            <a href="articles/ai-safety-what-to-know.html" class="next-step">
+                <h4>🛡️ Is AI Safe?</h4>
+                <p>Honest safety guide</p>
+            </a>
+            <a href="cheatsheet.html" class="next-step">
+                <h4>📋 Free Cheat Sheet</h4>
+                <p>Print and keep handy</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
