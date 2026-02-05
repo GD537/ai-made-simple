@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quick Reference Card — AI Made Simple</title>
+    <meta name="description" content="Free printable AI cheat sheet. 20 essential prompts for ChatGPT organized by category. Perfect for beginners.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        .card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a365d, #2b6cb0);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { font-size: 16px; opacity: 0.9; }
+        .content { padding: 30px; }
+        .section { margin-bottom: 25px; }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a365d;
+            border-bottom: 2px solid #ed8936;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .prompt-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        .prompt-num {
+            background: #ed8936;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .prompt-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+        .prompt-text strong {
+            color: #1a365d;
+            font-weight: 600;
+        }
+        .prompt-text code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: #2d3748;
+        }
+        .tips-box {
+            background: #fef5e7;
+            border: 1px solid #ed8936;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .tips-box h3 {
+            color: #c05621;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .tips-box ul { margin-left: 20px; }
+        .tips-box li { font-size: 13px; margin-bottom: 6px; color: #744210; }
+        .footer {
+            background: #edf2f7;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #718096;
+        }
+        .footer a { color: #2b6cb0; text-decoration: none; font-weight: 600; }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .content { padding: 20px; }
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .card { box-shadow: none; border-radius: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <h1>🤖 AI Quick Reference Card</h1>
+            <p>20 Essential Prompts for ChatGPT — Print This & Keep It Handy</p>
+        </div>
+        
+        <div class="content">
+            <p class="no-print" style="text-align:center; margin-bottom:20px; font-size:14px; color:#718096;">
+                💡 Tip: Press Ctrl+P (or Cmd+P on Mac) to print this page
+            </p>
+
+            <div class="two-col">
+                <div>
+                    <div class="section">
+                        <div class="section-title">✉️ Writing & Emails</div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">1</span>
+                            <div class="prompt-text"><strong>"Write a polite email to [company] about [issue]."</strong><br>Add: your customer history, what you want</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">2</span>
+                            <div class="prompt-text"><strong>"Rewrite this to sound more [professional/friendly/firm]:"</strong><br>Paste your draft text after the colon</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">3</span>
+                            <div class="prompt-text"><strong>"Write a thank-you note to [person] for [what they did]."</strong><br>The more detail, the more personal it sounds</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">4</span>
+                            <div class="prompt-text"><strong>"Proofread this and fix any mistakes:"</strong><br>Great for important emails before sending</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">🏥 Health & Wellness</div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">5</span>
+                            <div class="prompt-text"><strong>"I'm seeing my doctor about [issue]. What questions should I ask?"</strong><br>Add: your age, relevant conditions</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">6</span>
+                            <div class="prompt-text"><strong>"Explain what [medical term] means in simple English."</strong><br>Perfect for understanding test results</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">7</span>
+                            <div class="prompt-text"><strong>"Create a gentle exercise plan for [age] with [conditions]."</strong><br>Add: equipment, time available, limitations</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">8</span>
+                            <div class="prompt-text"><strong>"I have [dietary need]. Create 5 easy dinner recipes."</strong><br>Add: cooking skill level, available equipment</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">✈️ Travel & Planning</div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">9</span>
+                            <div class="prompt-text"><strong>"Plan a [X]-day trip to [place] for [who]. Budget $[amount]."</strong><br>Add: interests, mobility, accommodation preference</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">10</span>
+                            <div class="prompt-text"><strong>"I'm in [city]. Recommend 3 restaurants for dinner."</strong><br>Add: budget, cuisine preference, casual/nice</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">11</span>
+                            <div class="prompt-text"><strong>"Create a packing list for [trip details]."</strong><br>Add: season, activities, your preferences</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section">
+                        <div class="section-title">📚 Learning & Understanding</div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">12</span>
+                            <div class="prompt-text"><strong>"Explain [topic] like I'm hearing about it for the first time."</strong><br>Works for anything: tax, tech, science, history</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">13</span>
+                            <div class="prompt-text"><strong>"Summarise this in 3 key points:"</strong><br>Paste any long article, document, or email</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">14</span>
+                            <div class="prompt-text"><strong>"I want to learn [skill]. Create a beginner's plan."</strong><br>Add: your experience level, time available</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">15</span>
+                            <div class="prompt-text"><strong>"What are the pros and cons of [decision]?"</strong><br>Add: your situation, priorities, concerns</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">🏠 Home & Daily Life</div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">16</span>
+                            <div class="prompt-text"><strong>"I have [ingredients]. What can I make for dinner?"</strong><br>Add: dietary needs, cooking skill, time</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">17</span>
+                            <div class="prompt-text"><strong>"Explain this bill/document in plain English:"</strong><br>Remove personal details before pasting</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">18</span>
+                            <div class="prompt-text"><strong>"Gift ideas for [person, age, interests]. Budget $[amount]."</strong><br>The more you describe them, the better the ideas</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">19</span>
+                            <div class="prompt-text"><strong>"My [device] is [problem]. Walk me through fixing it."</strong><br>Describe what you see, any error messages</div>
+                        </div>
+                        <div class="prompt-row">
+                            <span class="prompt-num">20</span>
+                            <div class="prompt-text"><strong>"Write a birthday message for [person]. They are [details]."</strong><br>Add: your relationship, their personality</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <h3>⚡ 5 Golden Rules for Better AI Responses</h3>
+                <ul>
+                    <li><strong>Be specific</strong> — The more detail you give, the better the answer</li>
+                    <li><strong>Say "simpler please"</strong> — If the answer is too complex, just ask</li>
+                    <li><strong>Say "try again"</strong> — Don't settle for the first response</li>
+                    <li><strong>Never share</strong> passwords, bank details, or personal ID numbers</li>
+                    <li><strong>Always verify</strong> important information from a trusted source</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Free resource from <a href="https://gd537.github.io/ai-made-simple/">AI Made Simple</a> — AI explained for real people</p>
+            <p style="margin-top: 5px;">Get started: <strong>chat.openai.com</strong> (free account)</p>
+        </div>
+    </div>
+</body>
+</html>
