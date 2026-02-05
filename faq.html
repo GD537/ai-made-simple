@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions — AI Made Simple</title>
+    <meta name="description" content="Common questions about AI answered simply. Is ChatGPT safe? Is it free? How do I start? Get honest, jargon-free answers.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1a365d;
+            --blue-light: #2b6cb0;
+            --orange: #ed8936;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-600: #718096;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        h1 {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            font-size: 36px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-family: 'Inter', sans-serif;
+            color: var(--blue);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .faq-question .q {
+            background: var(--orange);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .faq-answer {
+            padding-left: 38px;
+        }
+        .faq-answer p { margin-bottom: 15px; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+        .highlight {
+            background: #fef5e7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        .cta-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            h1 { font-size: 28px; }
+            .faq-answer { padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <h1>Frequently Asked Questions</h1>
+        <p class="subtitle">Honest answers to the most common questions about AI.</p>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>Is ChatGPT free?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Yes.</strong> The basic version of ChatGPT is completely free. You can create an account at chat.openai.com and use it without paying anything.</p>
+                <p>There IS a paid version called ChatGPT Plus ($20/month) that's faster and uses a more advanced AI model. But for most people, the free version is excellent — and I recommend using it for at least 3 months before considering an upgrade.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>Is AI safe to use?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Generally yes.</strong> Using ChatGPT or Google Gemini is as safe as using Google Search or sending email.</p>
+                <p>Just follow three simple rules:</p>
+                <div class="highlight">
+                    1. Don't share sensitive information (passwords, bank details, personal ID numbers)<br>
+                    2. Don't trust AI blindly — verify important facts<br>
+                    3. Don't use AI to make medical, legal, or financial decisions without consulting a professional
+                </div>
+                <p>For a full guide, read: <a href="articles/ai-safety-what-to-know.html" style="color: var(--blue-light);">Is AI Safe? What You Actually Need to Know</a></p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>I'm not tech-savvy. Can I still use AI?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Absolutely.</strong> If you can send a text message, you can use AI. It's literally just typing a question into a box and reading the response.</p>
+                <p>You don't need to understand how it works. You don't need special skills. Adults over 55 are the fastest-growing group of AI users — because once people try it, they discover it's genuinely helpful.</p>
+                <p>Start here: <a href="start-here.html" style="color: var(--blue-light);">Your First 5 Minutes with AI</a></p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>What can AI actually help me with?</span>
+            </div>
+            <div class="faq-answer">
+                <p>More than you'd think! Here are the most popular uses:</p>
+                <div class="highlight">
+                    ✅ Writing emails and letters<br>
+                    ✅ Planning trips and activities<br>
+                    ✅ Understanding medical terms<br>
+                    ✅ Meal planning and recipes<br>
+                    ✅ Learning new topics<br>
+                    ✅ Explaining confusing documents<br>
+                    ✅ Brainstorming ideas<br>
+                    ✅ Preparing for appointments
+                </div>
+                <p>For 25 specific examples, see: <a href="articles/chatgpt-prompts-beginners.html" style="color: var(--blue-light);">25 ChatGPT Prompts Everyone Should Know</a></p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>Is ChatGPT always right?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>No.</strong> This is crucial to understand. AI sometimes makes confident-sounding mistakes. This is called "hallucination."</p>
+                <p>AI is great for drafts, ideas, and explanations — but always verify important facts from a trusted source. Think of it like a very smart friend who occasionally gets their facts mixed up.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>What's the difference between ChatGPT and Google?</span>
+            </div>
+            <div class="faq-answer">
+                <p>They're different tools for different jobs:</p>
+                <div class="highlight">
+                    <strong>Use Google when you want to FIND something:</strong><br>
+                    • A specific website<br>
+                    • A business phone number<br>
+                    • Today's news<br>
+                    • Opening hours<br><br>
+                    <strong>Use AI when you want to UNDERSTAND or CREATE something:</strong><br>
+                    • Explain a concept<br>
+                    • Write a draft<br>
+                    • Brainstorm ideas<br>
+                    • Plan something
+                </div>
+                <p>Full comparison: <a href="articles/ai-vs-google-search.html" style="color: var(--blue-light);">AI vs Google: When to Use Which</a></p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>Will AI take my job or my children's jobs?</span>
+            </div>
+            <div class="faq-answer">
+                <p>AI is changing jobs more than replacing them — similar to how computers, email, and smartphones changed work without eliminating it.</p>
+                <p>The people most at risk aren't those who might be replaced by AI — they're those who refuse to learn how to use AI. The technology itself is a tool. Those who learn to use it will thrive.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>Do I need to download anything?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>No.</strong> You can use ChatGPT and Google Gemini directly in your web browser — no download required.</p>
+                <p>There ARE apps available for phones if you prefer, but they're optional. Just go to chat.openai.com or gemini.google.com in any browser.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>Does AI remember what I tell it?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Within one conversation:</strong> Yes. It remembers everything you've said in that session.</p>
+                <p><strong>Between conversations:</strong> It depends on your settings. ChatGPT has an optional "Memory" feature that can remember facts about you across sessions. You can turn this off in Settings → Personalisation → Memory.</p>
+                <p>Either way, still don't share sensitive information like passwords or bank details.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="q">Q</span>
+                <span>How do I get better answers from AI?</span>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Be specific.</strong> The more detail you give, the better the response.</p>
+                <div class="highlight">
+                    ❌ "Write me an email"<br><br>
+                    ✅ "Write a polite but firm email to my electricity company about being overcharged $47 on my February bill. I've been a customer for 12 years and want a refund."
+                </div>
+                <p>Include relevant context: your age, situation, preferences, limitations. AI can't read your mind — tell it what it needs to know.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p style="font-family: 'Inter', sans-serif; color: var(--gray-600); font-size: 16px;">Still have questions?</p>
+            <a href="mailto:aimade.simple.news@gmail.com" class="cta-button">Email Us →</a>
+        </div>
+    </div>
+</body>
+</html>
