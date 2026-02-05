@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles - AI Made Simple</title>
-    <meta name="description" content="Beginner-friendly articles about AI—no jargon, just practical advice for everyday people.">
-    <meta property="og:title" content="Articles - AI Made Simple">
-    <meta property="og:description" content="Beginner-friendly articles about AI—no jargon, just practical advice for everyday people.">
+    <title>All Articles - AI Made Simple</title>
+    <meta name="description" content="Browse all beginner-friendly AI guides and tutorials. Learn about ChatGPT, AI tools, safety, and practical tips for everyday use.">
+    <meta property="og:title" content="All Articles - AI Made Simple">
+    <meta property="og:description" content="Browse all beginner-friendly AI guides and tutorials.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +19,9 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.8;
             color: #2d3748;
             background: #f7fafc;
             padding: 20px;
@@ -30,23 +30,19 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 20px;
             background: white;
+            padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .back-link {
+            font-family: 'Inter', sans-serif;
             color: #1a365d;
             text-decoration: none;
             font-size: 16px;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-weight: 600;
         }
         
@@ -55,129 +51,108 @@
         }
         
         h1 {
+            font-family: 'Inter', sans-serif;
             color: #1a365d;
             font-size: 42px;
+            line-height: 1.3;
             margin-bottom: 15px;
             font-weight: 700;
         }
         
         .subtitle {
+            font-family: 'Inter', sans-serif;
             color: #718096;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
         }
         
         .articles-grid {
             display: grid;
-            grid-template-columns: 1fr;
             gap: 30px;
-            margin-bottom: 50px;
+            margin-top: 20px;
         }
         
         .article-card {
-            background: white;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
-            padding: 35px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            padding: 30px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         .article-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            border-color: #ed8936;
+            background: white;
+            box-shadow: 0 4px 12px rgba(237, 137, 54, 0.1);
+            transform: translateY(-2px);
         }
         
-        .article-number {
+        .article-tag {
             display: inline-block;
-            background: #ed8936;
-            color: white;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ed8936;
+            background: #fef5e7;
+            padding: 5px 12px;
+            border-radius: 4px;
             margin-bottom: 15px;
         }
         
         .article-card h2 {
+            font-family: 'Inter', sans-serif;
             color: #1a365d;
-            font-size: 26px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 12px;
             font-weight: 700;
-            line-height: 1.3;
         }
         
         .article-card p {
+            font-family: 'Merriweather', serif;
             color: #4a5568;
             font-size: 17px;
             line-height: 1.7;
             margin-bottom: 20px;
         }
         
-        .read-more {
-            color: #ed8936;
+        .read-link {
+            font-family: 'Inter', sans-serif;
+            color: #1a365d;
+            text-decoration: none;
             font-weight: 600;
+            font-size: 16px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 16px;
+            transition: color 0.2s ease;
         }
         
-        .read-more::after {
-            content: '→';
-            font-size: 20px;
-            transition: transform 0.2s;
+        .read-link:hover {
+            color: #ed8936;
         }
         
-        .article-card:hover .read-more::after {
-            transform: translateX(4px);
-        }
-        
-        .topics-list {
-            color: #718096;
-            font-size: 15px;
-            margin-top: 15px;
-            font-style: italic;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .footer p {
-            color: #718096;
-            margin-bottom: 20px;
-        }
-        
-        .home-button {
-            display: inline-block;
-            background: #1a365d;
-            color: white;
-            padding: 14px 32px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: background 0.2s;
-        }
-        
-        .home-button:hover {
-            background: #2d3748;
+        .read-link::after {
+            content: "→";
+            margin-left: 8px;
+            font-size: 18px;
         }
         
         @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
             h1 {
                 font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
             }
             
             .article-card {
@@ -185,7 +160,7 @@
             }
             
             .article-card h2 {
-                font-size: 22px;
+                font-size: 21px;
             }
             
             .article-card p {
@@ -196,57 +171,46 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <a href="../index.html" class="back-link">← Back to AI Made Simple</a>
-            <h1>All Articles</h1>
-            <p class="subtitle">Practical, jargon-free guides to understanding and using AI in your everyday life</p>
-        </div>
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        
+        <h1>All Articles</h1>
+        <p class="subtitle">Beginner-friendly guides to help you understand and use AI with confidence</p>
         
         <div class="articles-grid">
-            <a href="what-is-chatgpt.html" class="article-card">
-                <div class="article-number">1</div>
+            <article class="article-card">
+                <span class="article-tag">Beginner Guide</span>
                 <h2>What Is ChatGPT? A Complete Beginner's Guide (2026)</h2>
-                <p>You've heard people talking about ChatGPT, but what exactly is it? This friendly guide explains what ChatGPT does, how to use it, and whether it's right for you—no tech expertise required.</p>
-                <div class="topics-list">What it is • How to access it • Your first conversation • What it's good at (and not good at) • Free vs paid • Safety tips</div>
-                <div class="read-more">Read Article</div>
-            </a>
+                <p>A friendly, jargon-free guide to understanding ChatGPT. Learn what it is, how to use it, and whether it's right for you.</p>
+                <a href="what-is-chatgpt.html" class="read-link">Read Article</a>
+            </article>
             
-            <a href="5-ways-ai-helps-daily-life.html" class="article-card">
-                <div class="article-number">2</div>
-                <h2>5 Ways AI Can Actually Help Your Daily Life (That Aren't Scary)</h2>
-                <p>Forget the hype and headlines. AI is already helping millions of people with ordinary tasks—from writing emails to planning trips. Discover practical, non-intimidating ways AI can make your life easier.</p>
-                <div class="topics-list">Writing help • Trip planning • Health information • Learning new skills • Managing finances</div>
-                <div class="read-more">Read Article</div>
-            </a>
+            <article class="article-card">
+                <span class="article-tag">Practical</span>
+                <h2>5 Ways AI Can Actually Help Your Daily Life</h2>
+                <p>Real, practical examples of how AI can save you time, reduce stress, and make everyday tasks easier—no tech expertise required.</p>
+                <a href="5-ways-ai-helps-daily-life.html" class="read-link">Read Article</a>
+            </article>
             
-            <a href="ai-safety-what-to-know.html" class="article-card">
-                <div class="article-number">3</div>
+            <article class="article-card">
+                <span class="article-tag">Safety</span>
                 <h2>Is AI Safe? What You Actually Need to Know</h2>
-                <p>An honest, clear-eyed look at AI safety. We'll separate fact from fiction, cover real privacy concerns, explain emerging scams, and show you how to protect yourself. No hype, no hysteria—just the truth.</p>
-                <div class="topics-list">What AI can and can't do • Privacy concerns • Scams to watch for • How to protect yourself • Hype vs reality</div>
-                <div class="read-more">Read Article</div>
-            </a>
+                <p>Straight answers about AI safety, privacy, and common concerns. Learn what's real, what's hype, and how to use AI responsibly.</p>
+                <a href="ai-safety-what-to-know.html" class="read-link">Read Article</a>
+            </article>
             
-            <a href="ai-tools-seniors-2026.html" class="article-card">
-                <div class="article-number">4</div>
+            <article class="article-card">
+                <span class="article-tag">Tool Reviews</span>
                 <h2>The 7 Best AI Tools for Seniors in 2026</h2>
-                <p>There are hundreds of AI tools, but which ones are actually worth your time? This guide covers seven practical, user-friendly tools that can genuinely improve your daily life—with honest advice on free vs paid options.</p>
-                <div class="topics-list">ChatGPT • Google Gemini • Grammarly • Google Lens • Otter.ai • MyHeritage • Be My Eyes</div>
-                <div class="read-more">Read Article</div>
-            </a>
+                <p>Tested and reviewed: the most useful, easy-to-use AI tools for older adults. Find the ones that fit your needs and skill level.</p>
+                <a href="ai-tools-seniors-2026.html" class="read-link">Read Article</a>
+            </article>
             
-            <a href="ai-vs-google-search.html" class="article-card">
-                <div class="article-number">5</div>
+            <article class="article-card">
+                <span class="article-tag">Tips</span>
                 <h2>AI vs Google: When to Use Which (And Why It Matters)</h2>
-                <p>Should you use ChatGPT or Google Search? The answer: both! Learn the key differences between AI and traditional search, when to use each one, and how they work together to make you more effective online.</p>
-                <div class="topics-list">Understanding the difference • When to use Google • When to use AI • Real examples • Decision guide</div>
-                <div class="read-more">Read Article</div>
-            </a>
-        </div>
-        
-        <div class="footer">
-            <p>More articles coming soon. Follow along as we demystify AI together.</p>
-            <a href="../index.html" class="home-button">Back to Home</a>
+                <p>Learn the difference between AI tools like ChatGPT and Google Search—and when to use each one for the best results.</p>
+                <a href="ai-vs-google-search.html" class="read-link">Read Article</a>
+            </article>
         </div>
     </div>
 </body>

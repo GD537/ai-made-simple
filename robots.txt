@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gd537.github.io/ai-made-simple/sitemap.xml
