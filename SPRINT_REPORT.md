@@ -30,7 +30,7 @@ Built a complete AI education brand from scratch in one sprint. Everything is re
 - GitHub Actions auto-deploy
 - Mobile responsive
 
-### 📝 Articles (10 complete, ~220KB)
+### 📝 Articles (15 complete, ~343KB)
 | # | Article | Size | Topic |
 |---|---------|------|-------|
 | 1 | What Is ChatGPT? | 16KB | Beginner guide |
@@ -43,10 +43,13 @@ Built a complete AI education brand from scratch in one sprint. Everything is re
 | 8 | AI Scams Protection | 22KB | Safety |
 | 9 | AI Photo Restoration | 24KB | Tutorial |
 | 10 | 25 ChatGPT Prompts | 28KB | Essential |
+| 11 | AI Genealogy & Family History | 21KB | Tutorial |
+| 12 | AI Privacy Guide | 21KB | Privacy |
+| 13 | AI Home & Garden | 22KB | Tutorial |
+| 14 | Google Gemini Guide | 24KB | Guide |
+| 15 | AI Language Learning | 25KB | Tutorial |
 
-**+5 MORE in progress** (genealogy, privacy, home/garden, Google Gemini, language learning)
-
-### 📬 Newsletter Issues (8 ready to publish)
+### 📬 Newsletter Issues (10 ready to publish)
 1. Welcome + First Steps
 2. AI Meal Planning
 3. AI Travel Agent
