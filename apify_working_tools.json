@@ -1,0 +1,200 @@
+{
+  "discovered_at": "2026-02-06T18:02:43.237268",
+  "api_status": "working",
+  "account": "jazzy_beetroot",
+  "popular_actors": [],
+  "useful_tools": {
+    "web scraper": [
+      {
+        "id": "moJRLRc85AitArpNN",
+        "name": "Web Scraper",
+        "username": "apify",
+        "runs": 176754903
+      },
+      {
+        "id": "ChNuXurElMWvpbJB9",
+        "name": "Cloudflare Web Scraper",
+        "username": "ecomscrape",
+        "runs": 140078
+      },
+      {
+        "id": "XxkOVs4yAyUt5VK0k",
+        "name": "Australian Property Listings Web Scraper",
+        "username": "scrapemind",
+        "runs": 21942
+      },
+      {
+        "id": "37gJxN0CiyIDdXeD4",
+        "name": "Instant web data scraper - Scrape any website",
+        "username": "curious_coder",
+        "runs": 35891
+      },
+      {
+        "id": "Tb6PhwkU2VPsWCSua",
+        "name": "Dark Web Scraper",
+        "username": "epctex",
+        "runs": 7461
+      }
+    ],
+    "google search": [
+      {
+        "id": "nFJndFXA5zjCTuudP",
+        "name": "Google Search Results Scraper",
+        "username": "apify",
+        "runs": 57236034
+      },
+      {
+        "id": "V8SFJw3gKgULelpok",
+        "name": "Google Search Scraper",
+        "username": "epctex",
+        "runs": 56331
+      },
+      {
+        "id": "563JCPLOqM1kMmbbP",
+        "name": "Google Search Results (SERP) Scraper",
+        "username": "scraperlink",
+        "runs": 8641133
+      },
+      {
+        "id": "jco0GaQY70XZcwqDI",
+        "name": "Google Maps Search: Cheaper, Robust, Easy to use",
+        "username": "agents",
+        "runs": 136091
+      },
+      {
+        "id": "66HAxOgo57I21PQ4K",
+        "name": "Google search Parser google maps / my business",
+        "username": "saswave",
+        "runs": 75355
+      }
+    ],
+    "youtube": [
+      {
+        "id": "h7sDV53CddomktSi5",
+        "name": "YouTube Scraper",
+        "username": "streamers",
+        "runs": 11334826
+      },
+      {
+        "id": "y1IMcEPawMQPafm02",
+        "name": "Youtube Video Downloader",
+        "username": "epctex",
+        "runs": 674792
+      },
+      {
+        "id": "p7UMdpQnjKmmpR21D",
+        "name": "YouTube Comments Scraper",
+        "username": "streamers",
+        "runs": 368428
+      },
+      {
+        "id": "CTQcdDtqW5dvELvur",
+        "name": "Youtube Transcript Scraper",
+        "username": "topaz_sharingan",
+        "runs": 2104411
+      },
+      {
+        "id": "UUhJDfKJT2SsXdclR",
+        "name": "YouTube Video Downloader",
+        "username": "streamers",
+        "runs": 34478
+      }
+    ],
+    "instagram": [
+      {
+        "id": "shu8hvrXbJbY3Eb9W",
+        "name": "Instagram Scraper",
+        "username": "apify",
+        "runs": 90405450
+      },
+      {
+        "id": "SbK00X0JYCPblD2wp",
+        "name": "Instagram Comments Scraper",
+        "username": "apify",
+        "runs": 4117109
+      },
+      {
+        "id": "dSCLg0C3YEZ83HzYX",
+        "name": "Instagram Profile Scraper",
+        "username": "apify",
+        "runs": 57106836
+      },
+      {
+        "id": "nH2AHrwxeTRJoN5hX",
+        "name": "Instagram Post Scraper",
+        "username": "apify",
+        "runs": 19216733
+      },
+      {
+        "id": "reGe1ST3OBgYZSsZJ",
+        "name": "Instagram Hashtag Scraper",
+        "username": "apify",
+        "runs": 1987623
+      }
+    ],
+    "twitter": [
+      {
+        "id": "61RPP7dywgiy0JPD0",
+        "name": "\ud83c\udfef Tweet Scraper V2 - X / Twitter Scraper",
+        "username": "apidojo",
+        "runs": 128399379
+      },
+      {
+        "id": "nfp1fpt5gUlBwPcor",
+        "name": "Twitter (X.com) Scraper Unlimited: No Limits",
+        "username": "apidojo",
+        "runs": 9619234
+      },
+      {
+        "id": "CJdippxWmn9uRfooo",
+        "name": "Tweet Scraper|$0.25/1K Tweets | Pay-Per Result | No Rate Limits",
+        "username": "kaitoeasyapi",
+        "runs": 31252975
+      },
+      {
+        "id": "C2Wk3I6xAqC4Xi63f",
+        "name": "Twitter (X) Follower Scraper | $0.1 / 1K | Email| No Rate Limit",
+        "username": "kaitoeasyapi",
+        "runs": 396516
+      },
+      {
+        "id": "VsTreSuczsXhhRIqa",
+        "name": "Twitter (X.com) Tweets & Profiles Scraper",
+        "username": "web.harvester",
+        "runs": 609700
+      }
+    ],
+    "news": [
+      {
+        "id": "eWUEW5YpCaCBAa0Zs",
+        "name": "Google News Scraper",
+        "username": "lhotanova",
+        "runs": 2960538
+      },
+      {
+        "id": "6vAxbA15R5J4uLKZ0",
+        "name": "Google News Scraper",
+        "username": "easyapi",
+        "runs": 168295
+      },
+      {
+        "id": "KIZXeJ0LsBt6YYeLi",
+        "name": "Bloomberg News Scraper",
+        "username": "romy",
+        "runs": 117353
+      },
+      {
+        "id": "X81PxOydfbSEcYmNx",
+        "name": "Fast News Scraper",
+        "username": "timgreen",
+        "runs": 73425
+      },
+      {
+        "id": "mfB8OsXLfdeiQpkql",
+        "name": "Google News Scraper",
+        "username": "epctex",
+        "runs": 57995
+      }
+    ]
+  }
+}

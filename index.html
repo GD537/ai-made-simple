@@ -3,960 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>🎭 AI Made Simple - Enhanced v2.0</title>
+    <title>AI Made Simple — Technology Explained for Real People</title>
+    <meta name="description" content="Learn AI without the jargon. Practical guides, tutorials, and tips for using artificial intelligence in everyday life. Perfect for beginners and seniors.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
-            min-height: 100vh;
-            color: #e4e4e7;
-            overflow-x: hidden;
+        :root {
+            --blue: #1a365d;
+            --blue-light: #2b6cb0;
+            --orange: #ed8936;
+            --green: #38a169;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-600: #718096;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
         }
         
-        .container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 1rem; 
+        * { margin: 0; padding: 0; box-sizing: border-sizing; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
         }
         
         /* Header */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-            margin-bottom: 2rem;
+            background: var(--blue);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
         }
         
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #00d4ff, #7c3aed, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
         
-        .version {
-            background: rgba(0, 212, 255, 0.2);
-            color: #00d4ff;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--orange);
+            font-weight: 500;
         }
         
-        /* Main Grid */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 400px;
+        /* Nav */
+        nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
             gap: 2rem;
+            flex-wrap: wrap;
         }
         
-        @media (max-width: 1024px) {
-            .main-grid { 
-                grid-template-columns: 1fr; 
-                gap: 1rem; 
-            }
+        nav a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
         }
         
-        /* Face Swap Section */
-        .face-swap-section {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 16px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
+        nav a:hover {
+            color: var(--orange);
         }
         
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: #00d4ff;
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
             text-align: center;
         }
         
-        /* Upload Areas */
-        .upload-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(237, 137, 54, 0.4);
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2rem;
         }
         
-        @media (max-width: 768px) {
-            .upload-grid { grid-template-columns: 1fr; }
+        .section-title {
+            font-size: 2rem;
+            color: var(--blue);
+            font-weight: 700;
         }
         
-        .upload-area {
-            position: relative;
-            border: 2px dashed rgba(0, 212, 255, 0.5);
-            border-radius: 12px;
-            padding: 2rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.2);
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .upload-area:hover {
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-        }
-        
-        .upload-area.dragover {
-            border-color: #7c3aed;
-            background: rgba(124, 58, 237, 0.2);
-        }
-        
-        .upload-area.has-image {
-            border-color: #22c55e;
-            border-style: solid;
-        }
-        
-        .upload-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.7;
-        }
-        
-        .upload-text {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .upload-subtext {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-        
-        .file-input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-        
-        /* Preview Images */
-        .preview-image {
-            max-width: 100%;
-            max-height: 150px;
-            border-radius: 8px;
-            margin-top: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Quality Analysis */
-        .quality-analysis {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .quality-good {
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.5);
-            color: #22c55e;
-        }
-        
-        .quality-warning {
-            background: rgba(245, 158, 11, 0.2);
-            border: 1px solid rgba(245, 158, 11, 0.5);
-            color: #f59e0b;
-        }
-        
-        .quality-error {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
-            color: #ef4444;
-        }
-        
-        /* Live Preview Section */
-        .live-preview {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            border: 1px solid rgba(124, 58, 237, 0.5);
-            border-radius: 12px;
-            background: rgba(124, 58, 237, 0.1);
-            text-align: center;
-        }
-        
-        .preview-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #a855f7;
-            margin-bottom: 1rem;
-        }
-        
-        .preview-canvas {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1rem;
-        }
-        
-        .preview-status {
-            padding: 0.75rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            font-weight: 500;
-        }
-        
-        /* Action Buttons */
-        .action-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .action-buttons { grid-template-columns: 1fr; }
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .section-link {
+            color: var(--orange);
             text-decoration: none;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #6d28d9, #9333ea);
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: rgba(0, 212, 255, 0.2);
-            color: #00d4ff;
-            border: 1px solid rgba(0, 212, 255, 0.5);
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(0, 212, 255, 0.3);
-        }
-        
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-        
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top: 2px solid currentColor;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Sidebar */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .widget {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-        
-        .widget-title {
-            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: #00d4ff;
         }
         
-        .feature-list {
-            list-style: none;
+        /* Article Grid */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
         }
         
-        .feature-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .feature-list li::before {
-            content: "✨";
-            margin-right: 0.5rem;
-        }
-        
-        /* Tips */
-        .tips {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .tips h4 {
-            color: #f59e0b;
-            margin-bottom: 0.5rem;
-        }
-        
-        .tips ul {
-            list-style-type: disc;
-            margin-left: 1rem;
-        }
-        
-        .tips li {
-            margin: 0.25rem 0;
-            font-size: 0.9rem;
-        }
-        
-        /* Results Section */
-        .results-section {
-            margin-top: 2rem;
-            padding: 2rem;
-            border: 1px solid rgba(34, 197, 94, 0.5);
-            border-radius: 16px;
-            background: rgba(34, 197, 94, 0.1);
-            text-align: center;
-            display: none;
-        }
-        
-        .results-section.show {
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
             display: block;
         }
         
-        .result-image {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            margin: 1rem 0;
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        
+        .article-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-description {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+        
+        /* Feature Boxes */
+        .feature-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--orange);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feature-box h3 {
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-box p {
+            color: var(--gray-600);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gray-800);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .container { padding: 0.5rem; }
-            .face-swap-section { padding: 1rem; }
-            .upload-area { padding: 1.5rem 1rem; min-height: 150px; }
-            .upload-icon { font-size: 2rem; }
-            .btn { padding: 0.75rem 1.5rem; font-size: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.5rem; }
+            nav { padding: 1rem; gap: 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">🎭 AI Made Simple</div>
-            <div class="version">Enhanced v2.0</div>
-        </header>
-
-        <div class="main-grid">
-            <div class="face-swap-section">
-                <h2 class="section-title">🚀 Enhanced Face Swap with Live Preview</h2>
-                
-                <div class="upload-grid">
-                    <!-- Source Face Upload -->
-                    <div class="upload-area" id="sourceUpload">
-                        <input type="file" class="file-input" id="sourceFile" accept="image/*">
-                        <div class="upload-icon">👤</div>
-                        <div class="upload-text">Source Face</div>
-                        <div class="upload-subtext">Upload the face you want to use</div>
-                        <div class="upload-subtext">📱 Tap to select or drag & drop</div>
-                    </div>
-                    
-                    <!-- Target Image Upload -->
-                    <div class="upload-area" id="targetUpload">
-                        <input type="file" class="file-input" id="targetFile" accept="image/*">
-                        <div class="upload-icon">🖼️</div>
-                        <div class="upload-text">Target Image</div>
-                        <div class="upload-subtext">Upload the image to modify</div>
-                        <div class="upload-subtext">📱 Tap to select or drag & drop</div>
-                    </div>
-                </div>
-
-                <!-- Live Preview -->
-                <div class="live-preview" id="livePreview" style="display: none;">
-                    <h3 class="preview-title">⚡ Live Preview</h3>
-                    <canvas id="previewCanvas" class="preview-canvas"></canvas>
-                    <div id="previewStatus" class="preview-status"></div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" id="previewBtn" disabled>
-                        <span>👁️ Generate Preview</span>
-                    </button>
-                    <button class="btn btn-primary" id="swapBtn" disabled>
-                        <span id="swapBtnText">🎭 Create High Quality</span>
-                        <div class="loading" id="loadingSpinner" style="display: none;"></div>
-                    </button>
-                </div>
-
-                <!-- Quality Tips -->
-                <div class="tips">
-                    <h4>💡 Tips for Best Results</h4>
-                    <ul>
-                        <li>Use clear, well-lit photos where faces take up at least 1/4 of the image</li>
-                        <li>Ensure faces are looking towards the camera (not profile views)</li>
-                        <li>Higher resolution images (800px+) produce better results</li>
-                        <li>Avoid blurry, dark, or heavily filtered photos</li>
-                        <li>Mobile photos work great - just make sure faces are clearly visible</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="sidebar">
-                <!-- Features Widget -->
-                <div class="widget">
-                    <h3 class="widget-title">✨ Enhanced Features</h3>
-                    <ul class="feature-list">
-                        <li>Real-time preview before processing</li>
-                        <li>Advanced face blending technology</li>
-                        <li>Automatic image quality analysis</li>
-                        <li>Smart error detection & suggestions</li>
-                        <li>Mobile-optimized touch interface</li>
-                        <li>Auto-rotation for mobile photos</li>
-                        <li>Multi-face detection & processing</li>
-                        <li>Color matching for natural results</li>
-                    </ul>
-                </div>
-
-                <!-- Status Widget -->
-                <div class="widget">
-                    <h3 class="widget-title">📊 Processing Status</h3>
-                    <div id="statusWidget">
-                        <p>📤 Ready for upload</p>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-                            Upload your source face and target image to begin
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Results Widget -->
-                <div class="widget" id="resultsWidget" style="display: none;">
-                    <h3 class="widget-title">🎉 Results Ready</h3>
-                    <div id="resultContent"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Results Section -->
-        <div class="results-section" id="resultsSection">
-            <h2>🎭 Face Swap Complete!</h2>
-            <img id="resultImage" class="result-image" alt="Swapped Result">
-            <div style="margin-top: 1rem;">
-                <button class="btn btn-primary" id="downloadBtn">
-                    📥 Download Result
-                </button>
-                <button class="btn btn-secondary" id="newSwapBtn" style="margin-left: 1rem;">
-                    🔄 Create Another
-                </button>
-            </div>
-        </div>
+    <header>
+        <div class="logo">🤖 AI Made Simple</div>
+        <div class="tagline">Technology explained for real people</div>
+    </header>
+    
+    <nav>
+        <a href="start-here.html">Start Here</a>
+        <a href="articles/">All Articles</a>
+        <a href="cheatsheet.html">Cheat Sheet</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+    </nav>
+    
+    <div class="hero">
+        <h1>Welcome! Let's Make AI Simple Together</h1>
+        <p>No jargon. No hype. Just practical guides to help you use AI in everyday life.</p>
+        <a href="start-here.html" class="cta-button">🚀 Start Here (5 Minutes)</a>
     </div>
-
-    <script>
-        class EnhancedFaceSwapper {
-            constructor() {
-                this.sourceFile = null;
-                this.targetFile = null;
-                this.previewCanvas = document.getElementById('previewCanvas');
-                this.ctx = this.previewCanvas.getContext('2d');
-                
-                this.initializeEventListeners();
-            }
+    
+    <div class="container">
+        <!-- Popular Articles -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">🔥 Popular Guides</h2>
+                <a href="articles/" class="section-link">View All →</a>
+            </div>
             
-            initializeEventListeners() {
-                // File upload handling
-                document.getElementById('sourceFile').addEventListener('change', (e) => {
-                    this.handleFileSelect(e, 'source');
-                });
+            <div class="article-grid">
+                <a href="articles/what-is-chatgpt.html" class="article-card">
+                    <div class="article-icon">💬</div>
+                    <h3 class="article-title">What is ChatGPT?</h3>
+                    <p class="article-description">A complete beginner's guide to understanding and using ChatGPT — explained in plain English.</p>
+                </a>
                 
-                document.getElementById('targetFile').addEventListener('change', (e) => {
-                    this.handleFileSelect(e, 'target');
-                });
+                <a href="articles/5-ways-ai-helps-daily-life.html" class="article-card">
+                    <div class="article-icon">✨</div>
+                    <h3 class="article-title">5 Ways AI Helps Daily Life</h3>
+                    <p class="article-description">Practical ways artificial intelligence can save you time and make life easier — starting today.</p>
+                </a>
                 
-                // Drag and drop
-                this.setupDragAndDrop();
+                <a href="articles/ai-safety-what-to-know.html" class="article-card">
+                    <div class="article-icon">🛡️</div>
+                    <h3 class="article-title">AI Safety: What You Need to Know</h3>
+                    <p class="article-description">Separating real AI safety concerns from hype. What's worth worrying about and what isn't.</p>
+                </a>
                 
-                // Buttons
-                document.getElementById('previewBtn').addEventListener('click', () => {
-                    this.generatePreview();
-                });
+                <a href="articles/chatgpt-prompts-beginners.html" class="article-card">
+                    <div class="article-icon">📝</div>
+                    <h3 class="article-title">ChatGPT Prompts for Beginners</h3>
+                    <p class="article-description">100+ copy-paste prompts to get useful answers from ChatGPT. No technical knowledge required.</p>
+                </a>
                 
-                document.getElementById('swapBtn').addEventListener('click', () => {
-                    this.performFaceSwap();
-                });
+                <a href="articles/ai-email-writing.html" class="article-card">
+                    <div class="article-icon">📧</div>
+                    <h3 class="article-title">AI for Email Writing</h3>
+                    <p class="article-description">Write better emails in half the time using AI. Includes templates and examples.</p>
+                </a>
                 
-                document.getElementById('newSwapBtn').addEventListener('click', () => {
-                    this.resetInterface();
-                });
-                
-                // Paste from clipboard
-                document.addEventListener('paste', (e) => {
-                    this.handlePaste(e);
-                });
-            }
-            
-            setupDragAndDrop() {
-                ['sourceUpload', 'targetUpload'].forEach(id => {
-                    const area = document.getElementById(id);
-                    
-                    area.addEventListener('dragover', (e) => {
-                        e.preventDefault();
-                        area.classList.add('dragover');
-                    });
-                    
-                    area.addEventListener('dragleave', () => {
-                        area.classList.remove('dragover');
-                    });
-                    
-                    area.addEventListener('drop', (e) => {
-                        e.preventDefault();
-                        area.classList.remove('dragover');
-                        
-                        const files = e.dataTransfer.files;
-                        if (files.length > 0) {
-                            const type = id === 'sourceUpload' ? 'source' : 'target';
-                            this.processFile(files[0], type);
-                        }
-                    });
-                });
-            }
-            
-            handleFileSelect(event, type) {
-                const file = event.target.files[0];
-                if (file) {
-                    this.processFile(file, type);
-                }
-            }
-            
-            handlePaste(event) {
-                const items = event.clipboardData.items;
-                for (let item of items) {
-                    if (item.type.indexOf('image') !== -1) {
-                        const file = item.getAsFile();
-                        // Auto-detect if it should be source or target
-                        const type = this.sourceFile ? 'target' : 'source';
-                        this.processFile(file, type);
-                        break;
-                    }
-                }
-            }
-            
-            async processFile(file, type) {
-                // Validate file
-                if (!file.type.match(/image.*/)) {
-                    this.showError(`Please select an image file (JPG, PNG, etc.)`);
-                    return;
-                }
-                
-                if (file.size > 50 * 1024 * 1024) { // 50MB limit
-                    this.showError('File too large. Please use images smaller than 50MB.');
-                    return;
-                }
-                
-                // Store file
-                if (type === 'source') {
-                    this.sourceFile = file;
-                } else {
-                    this.targetFile = file;
-                }
-                
-                // Update UI
-                await this.updateUploadArea(file, type);
-                await this.analyzeImage(file, type);
-                this.updateButtons();
-                this.updateStatus();
-            }
-            
-            async updateUploadArea(file, type) {
-                const uploadArea = document.getElementById(type + 'Upload');
-                uploadArea.classList.add('has-image');
-                
-                // Create preview
-                const img = new Image();
-                img.onload = () => {
-                    // Clear existing content
-                    const existingPreview = uploadArea.querySelector('.preview-image');
-                    if (existingPreview) {
-                        existingPreview.remove();
-                    }
-                    
-                    // Add new preview
-                    img.className = 'preview-image';
-                    uploadArea.appendChild(img);
-                    
-                    // Update text
-                    const uploadText = uploadArea.querySelector('.upload-text');
-                    uploadText.textContent = type === 'source' ? '✅ Source Face Loaded' : '✅ Target Image Loaded';
-                    
-                    const uploadSubtext = uploadArea.querySelector('.upload-subtext');
-                    uploadSubtext.textContent = `${(file.size / 1024 / 1024).toFixed(1)}MB - Tap to change`;
-                };
-                
-                img.src = URL.createObjectURL(file);
-            }
-            
-            async analyzeImage(file, type) {
-                // Simulate image quality analysis
-                // In production, this would call the backend API
-                
-                const uploadArea = document.getElementById(type + 'Upload');
-                let analysisDiv = uploadArea.querySelector('.quality-analysis');
-                
-                if (!analysisDiv) {
-                    analysisDiv = document.createElement('div');
-                    analysisDiv.className = 'quality-analysis';
-                    uploadArea.appendChild(analysisDiv);
-                }
-                
-                // Show loading
-                analysisDiv.innerHTML = '🔍 Analyzing image quality...';
-                analysisDiv.className = 'quality-analysis quality-warning';
-                
-                // Simulate analysis delay
-                await this.sleep(1000);
-                
-                // Mock analysis result based on file size and type
-                const isGoodQuality = file.size > 100 * 1024 && file.type.includes('jpeg');
-                
-                if (isGoodQuality) {
-                    analysisDiv.className = 'quality-analysis quality-good';
-                    analysisDiv.innerHTML = `
-                        ✅ <strong>Excellent Quality</strong><br>
-                        📏 Resolution: Good<br>
-                        👤 Face detected: Yes<br>
-                        💡 Ready for processing
-                    `;
-                } else {
-                    analysisDiv.className = 'quality-analysis quality-warning';
-                    analysisDiv.innerHTML = `
-                        ⚠️ <strong>Acceptable Quality</strong><br>
-                        💡 Tips: Use higher resolution for best results<br>
-                        📱 Mobile photos work well<br>
-                        👤 Ensure face is clearly visible
-                    `;
-                }
-            }
-            
-            updateButtons() {
-                const previewBtn = document.getElementById('previewBtn');
-                const swapBtn = document.getElementById('swapBtn');
-                
-                const hasFiles = this.sourceFile && this.targetFile;
-                
-                previewBtn.disabled = !hasFiles;
-                swapBtn.disabled = !hasFiles;
-                
-                if (hasFiles) {
-                    previewBtn.innerHTML = '<span>👁️ Generate Preview</span>';
-                    swapBtn.innerHTML = '<span>🎭 Create High Quality</span>';
-                }
-            }
-            
-            updateStatus() {
-                const statusWidget = document.getElementById('statusWidget');
-                
-                let status = '';
-                let description = '';
-                
-                if (!this.sourceFile && !this.targetFile) {
-                    status = '📤 Ready for upload';
-                    description = 'Upload your source face and target image to begin';
-                } else if (this.sourceFile && !this.targetFile) {
-                    status = '👤 Source face loaded';
-                    description = 'Now upload the target image to modify';
-                } else if (!this.sourceFile && this.targetFile) {
-                    status = '🖼️ Target image loaded';
-                    description = 'Now upload the source face to use';
-                } else {
-                    status = '✅ Ready to process';
-                    description = 'Both images loaded. Generate preview or create high quality result';
-                }
-                
-                statusWidget.innerHTML = `
-                    <p>${status}</p>
-                    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-                        ${description}
-                    </p>
-                `;
-            }
-            
-            async generatePreview() {
-                const previewBtn = document.getElementById('previewBtn');
-                const livePreview = document.getElementById('livePreview');
-                const previewStatus = document.getElementById('previewStatus');
-                
-                // Show loading
-                previewBtn.innerHTML = '<div class="loading"></div> Generating Preview...';
-                previewBtn.disabled = true;
-                livePreview.style.display = 'block';
-                previewStatus.className = 'preview-status quality-warning';
-                previewStatus.textContent = '🔄 Creating preview... This may take a few seconds';
-                
-                try {
-                    // Simulate preview generation
-                    await this.sleep(2000);
-                    
-                    // Create mock preview by compositing images
-                    await this.createMockPreview();
-                    
-                    previewStatus.className = 'preview-status quality-good';
-                    previewStatus.textContent = '✅ Preview ready! This is a quick preview - use "Create High Quality" for best results';
-                    
-                } catch (error) {
-                    previewStatus.className = 'preview-status quality-error';
-                    previewStatus.textContent = '❌ Preview failed. You can still try the high quality processing.';
-                } finally {
-                    previewBtn.innerHTML = '<span>👁️ Generate Preview</span>';
-                    previewBtn.disabled = false;
-                }
-            }
-            
-            async createMockPreview() {
-                // Load and composite images for preview
-                const sourceImg = await this.loadImage(this.sourceFile);
-                const targetImg = await this.loadImage(this.targetFile);
-                
-                // Set canvas size
-                this.previewCanvas.width = Math.min(targetImg.width, 512);
-                this.previewCanvas.height = Math.min(targetImg.height, 512);
-                
-                // Draw target image
-                this.ctx.drawImage(targetImg, 0, 0, this.previewCanvas.width, this.previewCanvas.height);
-                
-                // Add overlay text (mock preview)
-                this.ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
-                this.ctx.font = 'bold 16px Arial';
-                this.ctx.fillRect(10, 10, 200, 30);
-                this.ctx.fillStyle = 'white';
-                this.ctx.fillText('🎭 Preview (Low Quality)', 15, 30);
-            }
-            
-            async performFaceSwap() {
-                const swapBtn = document.getElementById('swapBtn');
-                const swapBtnText = document.getElementById('swapBtnText');
-                const loadingSpinner = document.getElementById('loadingSpinner');
-                const statusWidget = document.getElementById('statusWidget');
-                
-                // Show loading state
-                swapBtn.disabled = true;
-                swapBtnText.style.display = 'none';
-                loadingSpinner.style.display = 'inline-block';
-                
-                statusWidget.innerHTML = `
-                    <p>🔄 Processing face swap...</p>
-                    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-                        This may take 5-15 seconds for high quality results
-                    </p>
-                `;
-                
-                try {
-                    // Simulate processing time
-                    await this.sleep(3000);
-                    
-                    // Create final result
-                    const resultUrl = await this.createFinalResult();
-                    
-                    // Show results
-                    this.showResults(resultUrl);
-                    
-                } catch (error) {
-                    this.showError('Face swap failed: ' + error.message);
-                } finally {
-                    // Reset button
-                    swapBtn.disabled = false;
-                    swapBtnText.style.display = 'inline';
-                    loadingSpinner.style.display = 'none';
-                }
-            }
-            
-            async createFinalResult() {
-                // Create final composite image
-                const targetImg = await this.loadImage(this.targetFile);
-                
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-                canvas.width = targetImg.width;
-                canvas.height = targetImg.height;
-                
-                // Draw target image
-                ctx.drawImage(targetImg, 0, 0);
-                
-                // Add "swapped" overlay (mock result)
-                ctx.fillStyle = 'rgba(124, 58, 237, 0.1)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = 'rgba(124, 58, 237, 0.8)';
-                ctx.font = 'bold 24px Arial';
-                const text = '🎭 AI Face Swap Result';
-                const metrics = ctx.measureText(text);
-                const x = (canvas.width - metrics.width) / 2;
-                const y = 50;
-                
-                ctx.fillRect(x - 10, y - 30, metrics.width + 20, 40);
-                ctx.fillStyle = 'white';
-                ctx.fillText(text, x, y);
-                
-                return canvas.toDataURL('image/jpeg', 0.9);
-            }
-            
-            showResults(resultUrl) {
-                const resultsSection = document.getElementById('resultsSection');
-                const resultImage = document.getElementById('resultImage');
-                const resultsWidget = document.getElementById('resultsWidget');
-                const downloadBtn = document.getElementById('downloadBtn');
-                
-                // Show result image
-                resultImage.src = resultUrl;
-                resultsSection.classList.add('show');
-                
-                // Update results widget
-                resultsWidget.style.display = 'block';
-                resultsWidget.innerHTML = `
-                    <h3 class="widget-title">🎉 Success!</h3>
-                    <p>✅ Face swap completed</p>
-                    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-                        High quality result ready for download
-                    </p>
-                `;
-                
-                // Setup download
-                downloadBtn.onclick = () => {
-                    const link = document.createElement('a');
-                    link.download = 'ai-face-swap-result.jpg';
-                    link.href = resultUrl;
-                    link.click();
-                };
-                
-                // Update status
-                const statusWidget = document.getElementById('statusWidget');
-                statusWidget.innerHTML = `
-                    <p>🎉 Swap complete!</p>
-                    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-                        Your enhanced result is ready
-                    </p>
-                `;
-                
-                // Scroll to results
-                resultsSection.scrollIntoView({ behavior: 'smooth' });
-            }
-            
-            resetInterface() {
-                // Clear files
-                this.sourceFile = null;
-                this.targetFile = null;
-                
-                // Reset upload areas
-                ['sourceUpload', 'targetUpload'].forEach(id => {
-                    const area = document.getElementById(id);
-                    area.classList.remove('has-image');
-                    
-                    const preview = area.querySelector('.preview-image');
-                    if (preview) preview.remove();
-                    
-                    const analysis = area.querySelector('.quality-analysis');
-                    if (analysis) analysis.remove();
-                    
-                    // Reset text
-                    const uploadText = area.querySelector('.upload-text');
-                    const uploadSubtext = area.querySelector('.upload-subtext');
-                    
-                    if (id === 'sourceUpload') {
-                        uploadText.textContent = 'Source Face';
-                        uploadSubtext.textContent = 'Upload the face you want to use';
-                    } else {
-                        uploadText.textContent = 'Target Image';
-                        uploadSubtext.textContent = 'Upload the image to modify';
-                    }
-                });
-                
-                // Reset file inputs
-                document.getElementById('sourceFile').value = '';
-                document.getElementById('targetFile').value = '';
-                
-                // Hide sections
-                document.getElementById('livePreview').style.display = 'none';
-                document.getElementById('resultsSection').classList.remove('show');
-                document.getElementById('resultsWidget').style.display = 'none';
-                
-                // Update interface
-                this.updateButtons();
-                this.updateStatus();
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            async loadImage(file) {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.onload = () => resolve(img);
-                    img.src = URL.createObjectURL(file);
-                });
-            }
-            
-            sleep(ms) {
-                return new Promise(resolve => setTimeout(resolve, ms));
-            }
-            
-            showError(message) {
-                alert('Error: ' + message);
-            }
-        }
+                <a href="articles/ai-scams-protection.html" class="article-card">
+                    <div class="article-icon">⚠️</div>
+                    <h3 class="article-title">Protecting Yourself from AI Scams</h3>
+                    <p class="article-description">How scammers use AI, and how to spot deepfakes, voice clones, and fake videos.</p>
+                </a>
+            </div>
+        </section>
         
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new EnhancedFaceSwapper();
+        <!-- Topics -->
+        <section class="section">
+            <h2 class="section-title">📚 Browse by Topic</h2>
             
-            // Add some visual flair
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-    </script>
+            <div class="article-grid">
+                <a href="articles/ai-travel-planning.html" class="article-card">
+                    <div class="article-icon">✈️</div>
+                    <h3 class="article-title">Travel Planning</h3>
+                    <p class="article-description">Use AI to plan perfect trips, find deals, translate menus, and navigate foreign cities.</p>
+                </a>
+                
+                <a href="articles/ai-photo-restoration.html" class="article-card">
+                    <div class="article-icon">📷</div>
+                    <h3 class="article-title">Photo Restoration</h3>
+                    <p class="article-description">Restore old family photos, remove scratches, colorize black & white images with AI.</p>
+                </a>
+                
+                <a href="articles/ai-genealogy-family-history.html" class="article-card">
+                    <div class="article-icon">🌳</div>
+                    <h3 class="article-title">Genealogy & Family History</h3>
+                    <p class="article-description">Use AI to research ancestors, organize records, and discover family stories.</p>
+                </a>
+                
+                <a href="articles/ai-home-garden.html" class="article-card">
+                    <div class="article-icon">🏡</div>
+                    <h3 class="article-title">Home & Garden</h3>
+                    <p class="article-description">AI tools for gardening advice, interior design, home repairs, and DIY projects.</p>
+                </a>
+                
+                <a href="articles/ai-learning-languages.html" class="article-card">
+                    <div class="article-icon">🌍</div>
+                    <h3 class="article-title">Learning Languages</h3>
+                    <p class="article-description">Practice conversations, get instant translations, and learn a new language with AI.</p>
+                </a>
+                
+                <a href="articles/ai-for-small-business.html" class="article-card">
+                    <div class="article-icon">💼</div>
+                    <h3 class="article-title">Small Business</h3>
+                    <p class="article-description">AI tools for marketing, customer service, bookkeeping, and growing your business.</p>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Why AI Made Simple -->
+        <section class="section">
+            <h2 class="section-title">Why AI Made Simple?</h2>
+            
+            <div class="feature-boxes">
+                <div class="feature-box">
+                    <h3>🎯 No Jargon</h3>
+                    <p>We explain AI in plain English. If you can read this, you can understand AI.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3>👥 For Everyone</h3>
+                    <p>Especially designed for adults 50+ who didn't grow up with this technology.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3>✅ Practical</h3>
+                    <p>Real-world use cases you can try today. No theory. No hype. Just what works.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3>🔒 Safe</h3>
+                    <p>We teach AI safety, privacy, and how to avoid scams. Stay secure while learning.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- More Articles -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">📖 More Helpful Guides</h2>
+                <a href="articles/" class="section-link">See All Articles →</a>
+            </div>
+            
+            <div class="article-grid">
+                <a href="articles/google-gemini-guide.html" class="article-card">
+                    <div class="article-icon">🔍</div>
+                    <h3 class="article-title">Google Gemini Guide</h3>
+                    <p class="article-description">How to use Google's AI assistant Gemini for search, research, and productivity.</p>
+                </a>
+                
+                <a href="articles/ai-creative-writing.html" class="article-card">
+                    <div class="article-icon">✍️</div>
+                    <h3 class="article-title">AI for Creative Writing</h3>
+                    <p class="article-description">Write stories, poems, and memoirs with AI assistance. Keep your voice, skip the blank page.</p>
+                </a>
+                
+                <a href="articles/ai-for-caregivers.html" class="article-card">
+                    <div class="article-icon">❤️</div>
+                    <h3 class="article-title">AI for Caregivers</h3>
+                    <p class="article-description">AI tools to help family caregivers manage schedules, medications, and find support.</p>
+                </a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p><strong>AI Made Simple</strong> — by Sam Digital</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Technology explained for real people. No jargon. No hype.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">© 2026 AI Made Simple. All rights reserved.</p>
+    </footer>
 </body>
 </html>
