@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Archive — AI Made Simple</title>
+    <meta name="description" content="Browse all AI Made Simple newsletter issues. Weekly AI news, tutorials, and tool reviews explained in plain English.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1a365d;
+            --blue-light: #2b6cb0;
+            --orange: #ed8936;
+            --green: #38a169;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-600: #718096;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+        }
+        
+        header {
+            background: var(--blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        
+        nav a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 1rem;
+        }
+        
+        nav a:hover { color: var(--orange); }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+        }
+        
+        .subscribe-box {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .subscribe-box h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .subscribe-box p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .subscribe-button {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .subscribe-button:hover {
+            background: #dd7528;
+        }
+        
+        .issue-list {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .issue-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .issue-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        
+        .issue-number {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .issue-title {
+            font-size: 1.8rem;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .issue-date {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .issue-excerpt {
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .issue-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .topic-tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .read-link {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .read-link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: var(--gray-800);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .issue-title { font-size: 1.5rem; }
+            nav a { display: block; margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🤖 AI Made Simple</div>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="newsletter.html">Newsletter</a>
+        <a href="articles/">Articles</a>
+        <a href="about.html">About</a>
+    </nav>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">📧 Newsletter Archive</h1>
+            <p class="page-subtitle">20 weeks of AI news, tutorials, and tool reviews — explained in plain English</p>
+        </div>
+        
+        <div class="subscribe-box">
+            <h2>📬 Get Future Issues</h2>
+            <p>Join 10,000+ readers who learn about AI every week — no jargon, no hype, just practical tips.</p>
+            <a href="#subscribe" class="subscribe-button">Subscribe Free (Email)</a>
+        </div>
+        
+        <div class="issue-list">
+            <div class="issue-card">
+                <div class="issue-number">Issue #20</div>
+                <h2 class="issue-title">"AI at Work: Your New Coworker"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">How AI is changing the workplace — from email assistants to meeting summaries. Plus: best AI productivity tools for 2026.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">💼 Work</span>
+                    <span class="topic-tag">🛠️ Tools</span>
+                    <span class="topic-tag">📊 Productivity</span>
+                </div>
+                <a href="content/newsletter-issue-20.md" class="read-link">Read Issue #20 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #19</div>
+                <h2 class="issue-title">"The AI Healthcare Revolution"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">How AI is helping doctors diagnose faster, personalizing treatments, and making healthcare more accessible. Safety first.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🏥 Health</span>
+                    <span class="topic-tag">📱 Apps</span>
+                    <span class="topic-tag">🔒 Privacy</span>
+                </div>
+                <a href="content/newsletter-issue-19.md" class="read-link">Read Issue #19 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #18</div>
+                <h2 class="issue-title">"AI Creative Tools Beginners Can Actually Use"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">Create music, art, videos, and animations with AI — no artistic skills required. Free tools included.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🎨 Art</span>
+                    <span class="topic-tag">🎵 Music</span>
+                    <span class="topic-tag">🎬 Video</span>
+                </div>
+                <a href="content/newsletter-issue-18.md" class="read-link">Read Issue #18 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #17</div>
+                <h2 class="issue-title">"AI-Powered Learning for Seniors"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">Learn new skills, languages, and hobbies with AI tutors that adapt to your pace. Never too late to learn something new.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">📚 Learning</span>
+                    <span class="topic-tag">🌍 Languages</span>
+                    <span class="topic-tag">👴 Seniors</span>
+                </div>
+                <a href="content/newsletter-issue-17.md" class="read-link">Read Issue #17 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #16</div>
+                <h2 class="issue-title">"Your AI Personal Finance Assistant"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">Track spending, find savings, plan budgets, and understand investments — all with AI help (and zero judgment).</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">💰 Money</span>
+                    <span class="topic-tag">📊 Budgeting</span>
+                    <span class="topic-tag">📈 Investing</span>
+                </div>
+                <a href="content/newsletter-issue-16.md" class="read-link">Read Issue #16 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #15</div>
+                <h2 class="issue-title">"AI for Pet Owners"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">Health monitoring, behavior training, breed identification, and even AI-powered pet cameras. Tech for furry friends.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🐶 Pets</span>
+                    <span class="topic-tag">🏥 Health</span>
+                    <span class="topic-tag">📷 Cameras</span>
+                </div>
+                <a href="content/newsletter-issue-15.md" class="read-link">Read Issue #15 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #14</div>
+                <h2 class="issue-title">"Making Sense of AI News"</h2>
+                <div class="issue-date">February 2026</div>
+                <p class="issue-excerpt">How to cut through AI hype and understand what's real, what matters, and what you can safely ignore.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">📰 News</span>
+                    <span class="topic-tag">🧠 Critical Thinking</span>
+                    <span class="topic-tag">✅ Fact Check</span>
+                </div>
+                <a href="content/newsletter-issue-14.md" class="read-link">Read Issue #14 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #13</div>
+                <h2 class="issue-title">"AI Home Automation Basics"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Smart lights, thermostats, security, and voice assistants explained. Make your home smarter without getting overwhelmed.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🏠 Smart Home</span>
+                    <span class="topic-tag">🔒 Security</span>
+                    <span class="topic-tag">💡 Automation</span>
+                </div>
+                <a href="content/newsletter-issue-13.md" class="read-link">Read Issue #13 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #12</div>
+                <h2 class="issue-title">"AI Writing Tools That Actually Help"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">From blog posts to memoirs — AI tools that make writing easier (not replace writers). Grammarly, Jasper, and more.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">✍️ Writing</span>
+                    <span class="topic-tag">📝 Editing</span>
+                    <span class="topic-tag">🛠️ Tools</span>
+                </div>
+                <a href="content/newsletter-issue-12.md" class="read-link">Read Issue #12 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #11</div>
+                <h2 class="issue-title">"AI Translation & Language Learning"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Break language barriers with AI translation. Plus: best apps for learning a new language at any age.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🌍 Languages</span>
+                    <span class="topic-tag">✈️ Travel</span>
+                    <span class="topic-tag">📱 Apps</span>
+                </div>
+                <a href="content/newsletter-issue-11.md" class="read-link">Read Issue #11 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #10</div>
+                <h2 class="issue-title">"Protecting Yourself from AI Scams"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Deepfakes, voice clones, and AI-generated scams are real. Here's how to spot them and stay safe.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">⚠️ Scams</span>
+                    <span class="topic-tag">🔒 Security</span>
+                    <span class="topic-tag">🛡️ Safety</span>
+                </div>
+                <a href="content/newsletter-issue-10.md" class="read-link">Read Issue #10 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #9</div>
+                <h2 class="issue-title">"AI Photography Made Easy"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Edit photos like a pro, remove backgrounds, restore old pictures, and organize thousands of memories — all with AI.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">📷 Photos</span>
+                    <span class="topic-tag">🎨 Editing</span>
+                    <span class="topic-tag">🛠️ Tools</span>
+                </div>
+                <a href="content/newsletter-issue-9.md" class="read-link">Read Issue #9 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #8</div>
+                <h2 class="issue-title">"AI Shopping & Price Comparison"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Find the best deals, compare products, and get personalized recommendations. AI-powered shopping assistants reviewed.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🛒 Shopping</span>
+                    <span class="topic-tag">💰 Savings</span>
+                    <span class="topic-tag">🤖 Assistants</span>
+                </div>
+                <a href="content/newsletter-issue-8.md" class="read-link">Read Issue #8 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #7</div>
+                <h2 class="issue-title">"Your AI Email Assistant"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Write better emails faster, organize your inbox, and never miss important messages. Gmail + AI = game changer.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">📧 Email</span>
+                    <span class="topic-tag">✍️ Writing</span>
+                    <span class="topic-tag">📊 Organization</span>
+                </div>
+                <a href="content/newsletter-issue-7.md" class="read-link">Read Issue #7 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #6</div>
+                <h2 class="issue-title">"AI Travel Planning 101"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Plan trips, find flights, book hotels, translate menus, and navigate cities — all with AI help. Travel smarter in 2026.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">✈️ Travel</span>
+                    <span class="topic-tag">🗺️ Planning</span>
+                    <span class="topic-tag">💡 Tips</span>
+                </div>
+                <a href="content/newsletter-issue-6.md" class="read-link">Read Issue #6 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #5</div>
+                <h2 class="issue-title">"Google vs ChatGPT: Which Should You Use?"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">When to use Google Search vs AI chatbots. Side-by-side comparisons + real examples to help you choose.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🔍 Search</span>
+                    <span class="topic-tag">💬 ChatGPT</span>
+                    <span class="topic-tag">🤔 Comparison</span>
+                </div>
+                <a href="content/newsletter-issue-5.md" class="read-link">Read Issue #5 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #4</div>
+                <h2 class="issue-title">"AI Voice Assistants (Siri, Alexa, Google)"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">What voice assistants can (and can't) do. Setup guides, privacy tips, and best uses for Siri, Alexa, and Google Assistant.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🗣️ Voice</span>
+                    <span class="topic-tag">📱 Assistants</span>
+                    <span class="topic-tag">🔒 Privacy</span>
+                </div>
+                <a href="content/newsletter-issue-4.md" class="read-link">Read Issue #4 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #3</div>
+                <h2 class="issue-title">"AI Safety & Privacy Basics"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">What data does AI collect? How to protect your privacy, avoid manipulation, and use AI safely. No paranoia, just facts.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🔒 Privacy</span>
+                    <span class="topic-tag">🛡️ Safety</span>
+                    <span class="topic-tag">📊 Data</span>
+                </div>
+                <a href="content/newsletter-issue-3.md" class="read-link">Read Issue #3 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #2</div>
+                <h2 class="issue-title">"5 Things AI Can Do For You This Week"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">Practical ways to use AI today: meal planning, organizing photos, writing thank-you notes, learning something new, and more.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">💡 Tips</span>
+                    <span class="topic-tag">🛠️ Tools</span>
+                    <span class="topic-tag">📝 Tutorials</span>
+                </div>
+                <a href="content/newsletter-issue-2.md" class="read-link">Read Issue #2 →</a>
+            </div>
+            
+            <div class="issue-card">
+                <div class="issue-number">Issue #1</div>
+                <h2 class="issue-title">"Welcome to the Future (It's Friendlier Than You Think)"</h2>
+                <div class="issue-date">January 2026</div>
+                <p class="issue-excerpt">The first issue! Google's free Gemini 2.5, your first ChatGPT conversation tutorial, and the magic phrase for better AI responses.</p>
+                <div class="issue-topics">
+                    <span class="topic-tag">🚀 Getting Started</span>
+                    <span class="topic-tag">💬 ChatGPT</span>
+                    <span class="topic-tag">📰 News</span>
+                </div>
+                <a href="content/newsletter-issue-1.md" class="read-link">Read Issue #1 →</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p><strong>AI Made Simple</strong> — by Sam Digital</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Technology explained for real people. No jargon. No hype.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">© 2026 AI Made Simple. All rights reserved.</p>
+    </footer>
+</body>
+</html>
