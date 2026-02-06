@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>AI Made Simple</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e4e4e7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #a1a1aa;
+            margin-bottom: 2rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .feature-card p {
+            color: #a1a1aa;
+            line-height: 1.6;
+        }
+        
+        .tools-section {
+            margin: 4rem 0;
+        }
+        
+        .tools-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+        
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tool-item {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .tool-item h4 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-item p {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        
+        .stat-label {
+            color: #a1a1aa;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: #71717a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+        
+        .private-badge {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="private-badge">🔒 Private</div>
+    
+    <div class="container">
+        <header>
+            <h1>AI Made Simple</h1>
+            <p class="tagline">Your Personal AI Research & Tools Platform</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="face-count">10,000+</div>
+                <div class="stat-label">Face Database</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">29</div>
+                <div class="stat-label">Tools Built</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎭</div>
+                <h3>Face Swap</h3>
+                <p>Advanced face swapping with Roop, FaceFusion, and InsightFace. One-click swaps for images and videos.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>OSINT Tools</h3>
+                <p>Comprehensive investigation toolkit: email, username, phone, domain, and image analysis.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🗄️</div>
+                <h3>Face Database</h3>
+                <p>Searchable database of AI-generated faces with age, gender, and embedding analysis.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Analysis</h3>
+                <p>Face matching, similarity search, age/gender detection, and batch processing.</p>
+            </div>
+        </div>
+        
+        <div class="tools-section">
+            <h2>Available Tools</h2>
+            <div class="tool-list">
+                <div class="tool-item">
+                    <h4>🎭 Face Swap</h4>
+                    <p>batch_swap, video_swap, quick_match</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🔍 OSINT</h4>
+                    <p>investigate, social_lookup, email_osint</p>
+                </div>
+                <div class="tool-item">
+                    <h4>📱 Phone</h4>
+                    <p>phone_lookup, phoneinfoga</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🌐 Domain</h4>
+                    <p>domain_intel, theHarvester, whois</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🖼️ Image</h4>
+                    <p>metadata_extract, reverse_image_search</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🔐 Security</h4>
+                    <p>hash_lookup, breach_search</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>AI Made Simple — Private Research Platform</p>
+            <p>Not indexed. Not searchable. Your data stays yours.</p>
+        </footer>
+    </div>
+</body>
+</html>

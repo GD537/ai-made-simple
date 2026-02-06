@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Tools - AI Made Simple</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e4e4e7;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        nav a {
+            color: #a1a1aa;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .subtitle {
+            color: #a1a1aa;
+            margin-bottom: 2rem;
+        }
+        
+        .category {
+            margin-bottom: 3rem;
+        }
+        
+        .category h2 {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .tool-card h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        
+        .tool-card p {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-card code {
+            display: block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #7dd3fc;
+            overflow-x: auto;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-ready { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+        .badge-beta { background: rgba(234, 179, 8, 0.2); color: #fde047; }
+        
+        .private-badge {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="private-badge">🔒 Private</div>
+    
+    <div class="container">
+        <nav>
+            <a href="index.html">← Home</a>
+            <div>
+                <a href="tools.html">Tools</a>
+                <a href="faces.html">Faces</a>
+            </div>
+        </nav>
+        
+        <h1>🛠️ Tools Reference</h1>
+        <p class="subtitle">29 tools across 5 categories. All scripts located in /root/.openclaw/</p>
+        
+        <div class="category">
+            <h2>🎭 Face Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>batch_swap.py</h3>
+                    <p>Swap one face onto multiple target images at once.</p>
+                    <code>python batch_swap.py face.jpg targets/ output/</code>
+                </div>
+                <div class="tool-card">
+                    <h3>video_swap.py</h3>
+                    <p>Face swap in videos using Roop.</p>
+                    <code>python video_swap.py face.jpg video.mp4 out.mp4</code>
+                </div>
+                <div class="tool-card">
+                    <h3>quick_match.py</h3>
+                    <p>Compare two faces - are they the same person?</p>
+                    <code>python quick_match.py face1.jpg face2.jpg</code>
+                </div>
+                <div class="tool-card">
+                    <h3>face_search.py</h3>
+                    <p>Find similar faces in the database.</p>
+                    <code>python face_search.py query.jpg 0.5</code>
+                </div>
+                <div class="tool-card">
+                    <h3>face_db.py</h3>
+                    <p>Manage the named face database.</p>
+                    <code>python face_db.py add image.jpg "Name"</code>
+                </div>
+                <div class="tool-card">
+                    <h3>age_gender_scan.py</h3>
+                    <p>Batch analyze faces for age and gender.</p>
+                    <code>python age_gender_scan.py directory/</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>🔍 OSINT Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>investigate.py</h3>
+                    <p>Master OSINT script - email, username, phone, domain, image.</p>
+                    <code>python investigate.py email target@example.com</code>
+                </div>
+                <div class="tool-card">
+                    <h3>social_lookup.py</h3>
+                    <p>Search username across 20+ platforms.</p>
+                    <code>python social_lookup.py username</code>
+                </div>
+                <div class="tool-card">
+                    <h3>email_osint.py</h3>
+                    <p>Email analysis - provider, name extraction, DNS.</p>
+                    <code>python email_osint.py user@example.com</code>
+                </div>
+                <div class="tool-card">
+                    <h3>domain_intel.py</h3>
+                    <p>Domain recon - DNS, SSL, WHOIS.</p>
+                    <code>python domain_intel.py example.com</code>
+                </div>
+                <div class="tool-card">
+                    <h3>phone_lookup.py</h3>
+                    <p>Phone intelligence - country, carrier, type.</p>
+                    <code>python phone_lookup.py +61410123456</code>
+                </div>
+                <div class="tool-card">
+                    <h3>ip_intel.py</h3>
+                    <p>IP geolocation and reputation check.</p>
+                    <code>python ip_intel.py 8.8.8.8</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>📄 File Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>metadata_extract.py</h3>
+                    <p>Extract EXIF and hidden data from files.</p>
+                    <code>python metadata_extract.py image.jpg</code>
+                </div>
+                <div class="tool-card">
+                    <h3>hash_lookup.py</h3>
+                    <p>Check hashes against malware databases.</p>
+                    <code>python hash_lookup.py --file suspicious.exe</code>
+                </div>
+                <div class="tool-card">
+                    <h3>pdf_extract.py</h3>
+                    <p>Extract text and metadata from PDFs.</p>
+                    <code>python pdf_extract.py document.pdf</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>🌐 Web Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>web_archive.py</h3>
+                    <p>Find historical versions of webpages.</p>
+                    <code>python web_archive.py https://example.com</code>
+                </div>
+                <div class="tool-card">
+                    <h3>screenshot_page.py</h3>
+                    <p>Take screenshots of webpages.</p>
+                    <code>python screenshot_page.py https://example.com out.png</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>📊 Reports</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>osint_report.py</h3>
+                    <p>Generate comprehensive investigation reports.</p>
+                    <code>python osint_report.py -e email -u username</code>
+                </div>
+                <div class="tool-card">
+                    <h3>molly_status.py</h3>
+                    <p>Quick system status check.</p>
+                    <code>python molly_status.py</code>
+                </div>
+                <div class="tool-card">
+                    <h3>molly_tools.py</h3>
+                    <p>List all available tools by category.</p>
+                    <code>python molly_tools.py</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

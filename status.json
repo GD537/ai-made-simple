@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-02-06T14:15:26.626268",
+  "overall_status": "OPERATIONAL",
+  "status_color": "green",
+  "health_percentage": 100.0,
+  "check_duration_ms": 462.6,
+  "services": {
+    "face_tools": true,
+    "nginx": true
+  },
+  "api": {
+    "accessible": true,
+    "response_time_ms": 163.5415554046631,
+    "stats": {
+      "bulk_faces": 1524,
+      "named_faces": 3,
+      "progress": 95.8,
+      "target": 1590,
+      "total_size_mb": 818.5
+    }
+  },
+  "infrastructure": {
+    "ssl_valid": true,
+    "ssl_days_until_expiry": 87,
+    "disk_usage": "822M",
+    "memory_usage_mb": 178.3
+  }
+}

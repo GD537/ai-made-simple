@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-02-06T13:55:38.051178",
+  "target_url": "https://207-148-69-104.nip.io/faces",
+  "results": [
+    {
+      "test": "Authentication",
+      "status": "PASS",
+      "response_time": "194.7ms",
+      "details": "Database: 1524 faces"
+    },
+    {
+      "test": "SSL Certificate",
+      "status": "PASS",
+      "response_time": "11.1ms",
+      "details": "Expires in 87 days"
+    },
+    {
+      "test": "Database Size",
+      "status": "PASS",
+      "response_time": "153.0ms",
+      "details": "1,524 faces, 818.5MB, 95.8% complete"
+    },
+    {
+      "test": "Face Analysis",
+      "status": "FAIL",
+      "response_time": "241.4ms",
+      "details": "HTTP 400"
+    },
+    {
+      "test": "Backend Services",
+      "status": "PASS",
+      "response_time": "N/A",
+      "details": "All services active"
+    },
+    {
+      "test": "Security Headers",
+      "status": "PASS",
+      "response_time": "113.6ms",
+      "details": "All security headers present"
+    }
+  ],
+  "summary": {
+    "total_tests": 6,
+    "pass_count": 5,
+    "warn_count": 0,
+    "fail_count": 1
+  }
+}

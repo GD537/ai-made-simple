@@ -1,0 +1,9 @@
+# Privacy headers
+Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "DENY"
+
+# Block crawlers by user agent
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot) [NC]
+RewriteRule .* - [F,L]

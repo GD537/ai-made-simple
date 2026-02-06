@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Face Tools - System Status</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f1419;
+            color: #e6e6e6;
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle { color: #888; }
+        
+        .status-banner {
+            background: #0d7377;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .status-banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: #1a1f2e;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #2d3748;
+        }
+        
+        .metric:last-child { border-bottom: none; }
+        
+        .metric-label { color: #a0a0a0; }
+        .metric-value { font-weight: 600; }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .status-operational { background: #10b981; }
+        .status-degraded { background: #f59e0b; }
+        .status-outage { background: #ef4444; }
+        
+        .last-updated {
+            text-align: center;
+            color: #888;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .refresh-btn {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .refresh-btn:hover { background: #0284c7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🎭 Face Tools System Status</div>
+            <div class="subtitle">Real-time monitoring dashboard</div>
+        </header>
+        
+        <div class="status-banner">
+            <h2>
+                <span class="status-indicator status-operational"></span>
+                OPERATIONAL
+            </h2>
+            <p>System Health: 100.0%</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>🛠️ Services</h3>
+                <div class="metric">
+                    <span class="metric-label">Face Tools Service</span>
+                    <span class="metric-value">
+                        <span class="status-indicator status-operational"></span>
+                        Running
+                    </span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Nginx Web Server</span>
+                    <span class="metric-value">
+                        <span class="status-indicator status-operational"></span>
+                        Running
+                    </span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🌐 API Performance</h3>
+                <div class="metric">
+                    <span class="metric-label">API Accessibility</span>
+                    <span class="metric-value">
+                        <span class="status-indicator status-operational"></span>
+                        Accessible
+                    </span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Response Time</span>
+                    <span class="metric-value">163.5ms</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>💾 Database Stats</h3>
+                <div class="metric">
+                    <span class="metric-label">Total Faces</span>
+                    <span class="metric-value">1524</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Database Size</span>
+                    <span class="metric-value">818.5 MB</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Progress</span>
+                    <span class="metric-value">95.8%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Disk Usage</span>
+                    <span class="metric-value">822M</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🔒 Security & Infrastructure</h3>
+                <div class="metric">
+                    <span class="metric-label">SSL Certificate</span>
+                    <span class="metric-value">
+                        <span class="status-indicator status-operational"></span>
+                        Valid
+                    </span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Certificate Expiry</span>
+                    <span class="metric-value">87 days</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Memory Usage</span>
+                    <span class="metric-value">178.3 MB</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="last-updated">
+            Last updated: 2026-02-06 14:15:26 UTC<br>
+            Check duration: 462.6ms
+            <br>
+            <button class="refresh-btn" onclick="location.reload()">🔄 Refresh Status</button>
+        </div>
+    </div>
+</body>
+</html>
