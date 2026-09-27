@@ -47,6 +47,15 @@ ai-made-simple/
 │   ├── quora-reddit-posts.md
 │   ├── youtube-scripts.md
 │   └── email-welcome-sequence.md
+├── family-movies/              # Family Movie Night app (separate from the articles site)
+│   ├── index.html              # App shell + inline CSS
+│   ├── js/engine.js            # Recommendation logic (pure, tested)
+│   ├── js/importers.js         # Netflix/Letterboxd/IMDb/CSV/zip parsing (pure, tested)
+│   ├── js/services.js          # TMDB, title matching, Trakt/Jellyfin/Plex, Claude photo reading
+│   ├── js/demo-data.js         # Built-in film list + demo family
+│   ├── js/app.js               # UI, localStorage state, event handling
+│   ├── tests/                  # node:test unit tests
+│   └── README.md
 ├── public/                     # Alternate/private-hosted interface
 │   ├── index.html              # Private-deployment landing page
 │   └── tools.html              # Tools page
@@ -145,6 +154,19 @@ All main pages include a consistent `<nav>` bar linking to:
 
 Articles include a back link to the homepage.
 
+## Family Movie Night app (`family-movies/`)
+
+A self-contained family film recommender that sits alongside the articles site. It isn't linked from the site nav or `sitemap.xml`, and it deploys with everything else when `master` is pushed. See `family-movies/README.md` for how it works.
+
+- **Separate JS files are intended here**, unlike the rest of the site: the logic is split into files so it can be unit-tested. CSS stays inline in `index.html`.
+- **Classic scripts, not ES modules**, so the page also works when opened straight from disk. Each file uses the same wrapper: `module.exports` in Node, a `window.FM*` global in the browser (`FMEngine`, `FMImport`, `FMServices`, `FMDemo`). Load order in `index.html` matters.
+- **`engine.js` and `importers.js` must stay pure**: no DOM, no network. `services.js` takes an injectable `fetch` (and Anthropic SDK class) so it can be tested offline.
+- **Escaping:** in `app.js`, every piece of text from people, files or APIs must go through `esc()` before reaching `innerHTML`, including attribute values.
+- **Clicks** are handled by one listener that dispatches on `data-action`. Form controls use `data-change` / `data-input`, and file inputs use `data-file`.
+- **State** is in localStorage: `familyMovies.state.v1` (family, history, settings), `familyMovies.movies.v1` (film cache) and `familyMovies.keys.v1` (TMDB / Anthropic / Trakt keys). Keys never go into backups.
+- **Claude API:** screenshot and shelf-photo import use the official `@anthropic-ai/sdk` (pinned version, loaded from jsDelivr) with model `claude-opus-5`, `output_config.format` JSON schema, and `fallbacks: "default"` under the `server-side-fallback-2026-07-01` beta.
+- **Tests:** `node --test 'family-movies/tests/*.test.js'`. The SDK request-shape test runs only when `ANTHROPIC_SDK_DIR` points at a folder with `@anthropic-ai/sdk` installed.
+
 ## Privacy Configuration
 
 The site is configured to block search engine indexing:
@@ -184,10 +206,10 @@ These files are not part of the current educational content site and can be clea
 
 1. **No build system** — changes to HTML files take effect immediately on deploy. There is nothing to compile or bundle.
 2. **Inline styles only** — do not create external CSS files. Follow the existing pattern of `<style>` blocks in each page.
-3. **Self-contained pages** — each HTML file includes all its own styles and scripts. There are no shared JS/CSS imports across pages.
+3. **Self-contained pages** — each HTML file includes all its own styles and scripts. There are no shared JS/CSS imports across pages. (Exception: `family-movies/` splits its JS into files for testing; see its section above.)
 4. **Audience awareness** — all content should be written for non-technical readers. Avoid technical jargon. Use clear, simple language.
 5. **Privacy first** — the site is intentionally not indexed by search engines. Do not remove the privacy headers or robots.txt rules without explicit permission.
 6. **Large file caution** — `apify_tools_analysis.json` is ~22 MB. Avoid reading or processing this file unnecessarily.
 7. **master = production** — be careful with changes to the `master` branch as they deploy automatically.
-8. **No tests or linting** — there is no test suite, linter, or formatter configured. Validate HTML manually.
+8. **Tests only for the app** — `family-movies/` has unit tests (`node --test 'family-movies/tests/*.test.js'`). The rest of the site has no tests, linter or formatter; validate HTML manually.
 9. **Google Fonts dependency** — pages load Inter and Merriweather from Google Fonts CDN. Pages will still render without them but with fallback fonts.
