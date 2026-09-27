@@ -197,6 +197,34 @@ test('"new to most of us" lets in a film only one person has seen, and says who'
   assert.match(most.top[0].reason, /kid1 loved it/);
 });
 
+test('"new to most of us" with two viewers, and never for a single viewer', () => {
+  const movies = { 1: movie(1, ['Comedy']) };
+  const members = [member('a'), member('b')];
+  const history = [watch('a', 1, { thumbs: 1, daysAgo: 400 })];
+  const two = recommend({ members, history, movies, viewerIds: ['a', 'b'], mode: 'new', settings: { newMeans: 'most' } });
+  assert.equal(two.top.length, 1, 'one of two has seen it: still counts as new');
+  const one = recommend({ members, history, movies, viewerIds: ['a'], mode: 'new', settings: { newMeans: 'most' } });
+  assert.equal(one.top.length, 0, 'the only viewer has seen it: not new');
+});
+
+test('a recent rewatch never outranks an older one, even when both scores are negative', () => {
+  // Both films are ones the kid dislikes the genre of, so both family scores go negative.
+  const movies = {
+    1: movie(1, ['Horror'], { title: 'Seen last week' }),
+    2: movie(2, ['Horror'], { title: 'Seen two years ago' }),
+  };
+  const members = [member('dad', { rewatchHalfLifeDays: 5 }), member('kid')];
+  const history = [watch('dad', 1, { thumbs: 1, daysAgo: 7 }), watch('dad', 2, { thumbs: 1, daysAgo: 730 })];
+  for (let i = 0; i < 10; i++) {
+    movies[20 + i] = movie(20 + i, ['Horror']);
+    history.push(watch('kid', 20 + i, { thumbs: -1, daysAgo: 5 }));
+  }
+  const r = recommend({ members, history, movies, viewerIds: ['dad', 'kid'], mode: 'favourites', settings: { strictness: 'strict' } });
+  const order = titles(r.top);
+  assert.ok(r.top.every((x) => x.score < 0), 'setup: scores are negative');
+  assert.deepEqual(order, ['Seen two years ago', 'Seen last week']);
+});
+
 test('"not for us" hides a film for the people who dismissed it', () => {
   const movies = { 1: movie(1, ['Comedy']), 2: movie(2, ['Comedy']) };
   const members = [member('a'), member('b')];

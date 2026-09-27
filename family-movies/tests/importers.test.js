@@ -100,10 +100,35 @@ test('any spreadsheet: columns guessed, rating scale detected', () => {
 });
 
 test('pasted lists: bullets, numbering and years', () => {
-  const recs = I.parseTitleList('1. Toy Story (1995)\n- Frozen 2013\n* Spider-Man: Into the Spider-Verse\n\n  Coco [2017]  \n2001: A Space Odyssey');
+  const recs = I.parseTitleList('1. Toy Story (1995)\n* Spider-Man: Into the Spider-Verse\n\n  Coco [2017]  \n2001: A Space Odyssey\nUp, 2009\nHugo - 2011');
   assert.deepEqual(recs.map((r) => [r.title, r.year]), [
-    ['Toy Story', 1995], ['Frozen', 2013], ['Spider-Man: Into the Spider-Verse', null], ['Coco', 2017], ['2001: A Space Odyssey', null],
+    ['Toy Story', 1995], ['Spider-Man: Into the Spider-Verse', null], ['Coco', 2017], ['2001: A Space Odyssey', null], ['Up', 2009], ['Hugo', 2011],
   ]);
+});
+
+test('pasted lists: a bare trailing year stays in the title, with a split fallback', () => {
+  const [ww, frozen] = I.parseTitleList('Wonder Woman 1984\n- Frozen 2013');
+  assert.deepEqual([ww.title, ww.year, ww.alt], ['Wonder Woman 1984', null, { title: 'Wonder Woman', year: 1984 }]);
+  assert.deepEqual([frozen.title, frozen.alt], ['Frozen 2013', { title: 'Frozen', year: 2013 }]);
+});
+
+test('spreadsheet edge cases: 0/1 like column, no recognisable title header', () => {
+  const liked = I.csvObjects('Title,Liked\nMoana,1\nFrozen,0\nUp,1\nCats,-1');
+  const recs = I.parseGeneric(liked.rows, I.guessMapping(liked.headers));
+  assert.deepEqual(recs.map((r) => r.thumbs), [1, 0, 1, -1], 'a 0/1 column is like / not, never a 1-star rating');
+  assert.equal(I.guessMapping(['Programme', 'When']).title, 'Programme', 'falls back to the first column');
+});
+
+test('written-out dates keep their calendar day in Australian time', () => {
+  const saved = process.env.TZ;
+  process.env.TZ = 'Australia/Sydney';
+  try {
+    assert.equal(I.parseDate('Jan 5, 2023'), '2023-01-05');
+    assert.equal(I.parseDate('5 January 2023'), '2023-01-05');
+    assert.equal(I.parseDate('2023/01/05'), '2023-01-05');
+  } finally {
+    if (saved === undefined) delete process.env.TZ; else process.env.TZ = saved;
+  }
 });
 
 test('Trakt, Jellyfin and Plex responses', () => {

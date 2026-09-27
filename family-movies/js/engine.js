@@ -90,7 +90,7 @@
   };
   const MEMBER_DEFAULTS = {
     adult: { tasteHalfLifeDays: 365, rewatchHalfLifeDays: 180, maxRating: 4 },
-    child: { tasteHalfLifeDays: 150, rewatchHalfLifeDays: 30, maxRating: 1 },
+    child: { tasteHalfLifeDays: 180, rewatchHalfLifeDays: 30, maxRating: 1 },
   };
 
   function resolveSettings(settings) {
@@ -444,8 +444,8 @@
       }
       if (seers.some((s) => s.agg.disliked)) return; // someone watching already disliked it
 
-      const unseen = viewers.length - seers.length;
-      const isNew = seers.length === 0 || (settings.newMeans === 'most' && unseen > viewers.length / 2);
+      // "New to most of us": fine if exactly one of two or more viewers has seen it.
+      const isNew = seers.length === 0 || (settings.newMeans === 'most' && viewers.length >= 2 && seers.length === 1);
       if (!isNew && !seers.some((s) => s.agg.liked)) return;
 
       if (useServices && onServices(movie, settings.services) === false) { counts.hiddenByService += 1; return; }
@@ -480,10 +480,12 @@
         if (readiness < TUNING.minReadiness) return;
       }
 
+      // Watched recently must always rank lower, including when the score is already negative.
+      const score = blended >= 0 ? blended * readiness : blended - (1 - readiness) * 0.5;
       const item = {
         movieId: movie.id,
         movie,
-        score: blended * readiness,
+        score,
         kind: isNew ? 'new' : 'rewatch',
         perMember,
         seenBy: seers.map((s) => ({

@@ -262,6 +262,12 @@
           decision = decideMatch(r, results);
           // A wrong year in the export shouldn't hide the film: retry without it.
           if (decision.status === 'none' && r.year && tmdb) decision = decideMatch(Object.assign({}, r, { year: null }), (await tmdb.search(r.title)).results);
+          // "Frozen 2013": the full text didn't match, so try it as title + year.
+          if (decision.status !== 'matched' && r.alt) {
+            const alt = Object.assign({}, r, { title: r.alt.title, year: r.alt.year });
+            const altDecision = decideMatch(alt, tmdb ? (await tmdb.search(alt.title, alt.year)).results : demoSearchResults(catalog, alt.title));
+            if (altDecision.status === 'matched' || decision.status === 'none') decision = altDecision;
+          }
         }
       } catch (err) {
         if (err && err.status === 401) throw err;

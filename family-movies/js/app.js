@@ -101,12 +101,18 @@
     others.slice(0, Math.ceil(others.length / 2)).forEach((m) => { delete movies[m.id]; });
   }
 
+  // The film cache is the thing that grows, so make room in it before giving up on the family data.
   function save() {
-    if (!writeJson(STATE_KEY, state)) toast("Couldn't save. This browser's storage may be full or turned off.");
-    if (!writeJson(MOVIES_KEY, movies)) {
+    let moviesOk = writeJson(MOVIES_KEY, movies);
+    if (!moviesOk) { pruneMovies(); moviesOk = writeJson(MOVIES_KEY, movies); }
+    let stateOk = writeJson(STATE_KEY, state);
+    if (!stateOk) {
       pruneMovies();
-      if (!writeJson(MOVIES_KEY, movies)) toast('The film cache is full, so some films were dropped.');
+      moviesOk = writeJson(MOVIES_KEY, movies);
+      stateOk = writeJson(STATE_KEY, state);
     }
+    if (!stateOk) toast("Couldn't save. This browser's storage may be full or turned off.");
+    else if (!moviesOk) toast('The film cache is full, so some films were dropped.');
   }
 
   function saveKeys() {
@@ -332,7 +338,7 @@
   // --------------------------------------------------------------- tonight
 
   function modeHint(mode) {
-    if (mode === 'new') return state.settings.newMeans === 'most' ? 'Films most of you haven’t seen.' : 'Only films nobody watching has seen.';
+    if (mode === 'new') return state.settings.newMeans === 'most' ? 'Films at most one of you has seen.' : 'Only films nobody watching has seen.';
     if (mode === 'favourites') return 'Films someone loved, once enough time has passed since they last watched.';
     return `Mostly new films, with about ${Math.round((state.settings.mixShare || 0.4) * 100)}% favourites to watch again.`;
   }
@@ -360,7 +366,7 @@
     const mine = new Set((state.settings.services || []).map(Number));
     const stream = (p.flatrate || []).concat(p.free || [], p.ads || []);
     const names = (list) => Array.from(new Set(list.map((x) => x.name))).slice(0, 3);
-    const link = p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">details</a>` : '';
+    const link = /^https:\/\//i.test(p.link || '') ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">details</a>` : '';
     const onMine = stream.filter((x) => mine.has(Number(x.id)));
     if (onMine.length) return `<p class="where">On ${esc(joinNames(names(onMine)))}${link}</p>`;
     if (stream.length) return `<p class="where off">Streaming on ${esc(joinNames(names(stream)))}${link}</p>`;
@@ -384,7 +390,7 @@
       <div class="card-top">
         ${posterHtml(m)}
         <div class="card-info">
-          <h3>${esc(m.title)} ${m.year ? `<span class="year">(${m.year})</span>` : ''}</h3>
+          <h3>${esc(m.title)} ${m.year ? `<span class="year">(${esc(m.year)})</span>` : ''}</h3>
           <div class="meta">${ratingBadge(m)}<span class="badge ${item.kind}">${item.kind === 'new' ? 'New' : 'Watch again'}</span>${m.runtime ? `<span>${fmtRuntime(m.runtime)}</span>` : ''}</div>
           <p class="seen-line">${esc(seenLine(item))}</p>
           <p class="reason">${esc(item.reason)}</p>
@@ -393,10 +399,10 @@
         </div>
       </div>
       <div class="card-actions">
-        <button class="btn primary small" data-action="watch" data-movie="${m.id}" data-kind="${item.kind}" data-context="${context}">▶ Watch this</button>
-        <button class="btn small" data-action="seen-open" data-movie="${m.id}" data-context="${context}" aria-expanded="${open}">✓ Seen it</button>
-        <button class="btn small" data-action="not-for-us" data-movie="${m.id}">👎 Not for us</button>
-        <button class="btn small" data-action="later" data-movie="${m.id}" aria-pressed="${saved}">${saved ? '★ Saved' : '＋ Later'}</button>
+        <button class="btn primary small" data-action="watch" data-movie="${esc(m.id)}" data-kind="${item.kind}" data-context="${context}">▶ Watch this</button>
+        <button class="btn small" data-action="seen-open" data-movie="${esc(m.id)}" data-context="${context}" aria-expanded="${open}">✓ Seen it</button>
+        <button class="btn small" data-action="not-for-us" data-movie="${esc(m.id)}">👎 Not for us</button>
+        <button class="btn small" data-action="later" data-movie="${esc(m.id)}" aria-pressed="${saved}">${saved ? '★ Saved' : '＋ Later'}</button>
       </div>
       ${open ? seenPanelHtml() : ''}
     </article>`;
@@ -528,8 +534,12 @@
   function memberCard(m, input) {
     const summary = E.tasteSummary(input, m.id);
     const count = state.history.filter((h) => h.memberId === m.id).length;
-    const sel = (field, choices, value) => `<select id="${field}-${esc(m.id)}" data-change="member-field" data-id="${esc(m.id)}" data-field="${field}">
-      ${choices.map(([v, l]) => `<option value="${v}" ${Number(value) === v ? 'selected' : ''}>${l}</option>`).join('')}</select>`;
+    const sel = (field, choices, value) => {
+      // Show the real value even if it isn't one of the usual choices.
+      const all = choices.some(([v]) => v === Number(value)) ? choices : [[Number(value), Number(value) + ' days']].concat(choices);
+      return `<select id="${field}-${esc(m.id)}" data-change="member-field" data-id="${esc(m.id)}" data-field="${field}">
+        ${all.map(([v, l]) => `<option value="${v}" ${Number(value) === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>`;
+    };
     return `<section class="panel member-card">
       <div class="head"><span class="emoji" aria-hidden="true">${esc(m.emoji)}</span>
         <div><h3>${esc(m.name)}</h3><p class="muted small">${count} film${count === 1 ? '' : 's'} in history · taste ${confidenceWord(summary.confidence)}</p></div></div>
@@ -576,8 +586,8 @@
       : [['1', '😍 Loved it', 'Loved it'], ['0', '🙂 OK', 'It was OK'], ['-1', '😕 Didn’t like', 'Didn’t like it'], ['skip', '🤷 Not seen', 'Haven’t seen it']];
     const cards = q.items.map((it) => `<div class="qr-card">
         ${posterHtml(it, 'w342')}
-        <div class="title">${esc(it.title)}${it.year ? ` (${it.year})` : ''}</div>
-        <div class="qr-buttons">${buttons.map(([v, label, aria]) => `<button data-action="qr-rate" data-movie="${it.id}" data-value="${v}" aria-label="${esc(aria)}: ${esc(it.title)}" title="${esc(aria)}">${label}</button>`).join('')}</div>
+        <div class="title">${esc(it.title)}${it.year ? ` (${esc(it.year)})` : ''}</div>
+        <div class="qr-buttons">${buttons.map(([v, label, aria]) => `<button data-action="qr-rate" data-movie="${esc(it.id)}" data-value="${v}" aria-label="${esc(aria)}: ${esc(it.title)}" title="${esc(aria)}">${label}</button>`).join('')}</div>
       </div>`).join('');
     return `<h1>Quick rate for ${esc(m.emoji)} ${esc(m.name)}</h1>
       <p class="muted">Tap what ${esc(m.name)} thought of each film. Skip anything ${esc(m.name)} hasn't seen. ${q.rated} rated so far.</p>
@@ -720,7 +730,10 @@
   function jobHtml() {
     const j = ui.job;
     if (!j) return '';
-    if (j.error) return `<div class="banner error">${esc(j.error)}</div>`;
+    return (j.error ? `<div class="banner error">${esc(j.error)}</div>` : '') + jobStepHtml(j);
+  }
+
+  function jobStepHtml(j) {
     if (j.step === 'working') {
       const w = j.total ? Math.round((j.done / j.total) * 100) : 10;
       return `<section class="panel"><p>${esc(j.label || 'Working…')}${j.total ? ` (${j.done} of ${j.total})` : ''}</p><div class="progress"><div style="width:${w}%"></div></div></section>`;
@@ -753,7 +766,7 @@
       }
       if (j.showTitles) {
         body += `<h3 style="margin-top:1rem">Titles found (<span id="titles-count">${included}</span> of ${j.records.length} selected)</h3><p class="hint">Untick anything that was read wrongly.</p>
-          <div style="max-height:320px;overflow:auto">${j.records.map((r, i) => `<label class="check"><input type="checkbox" ${r.include !== false ? 'checked' : ''} data-change="job-record" data-index="${i}"> ${esc(r.title)}${r.year ? ` (${r.year})` : ''}</label>`).join('')}</div>`;
+          <div style="max-height:320px;overflow:auto">${j.records.map((r, i) => `<label class="check"><input type="checkbox" ${r.include !== false ? 'checked' : ''} data-change="job-record" data-index="${i}"> ${esc(r.title)}${r.year ? ` (${esc(r.year)})` : ''}</label>`).join('')}</div>`;
       } else if (j.records) {
         body += `<p class="hint">${j.records.length} film entries found.</p>`;
       }
@@ -778,8 +791,8 @@
     return `<section class="panel"><h2>Did you mean…?</h2>
       <p class="muted">${q.length} imported title${q.length === 1 ? '' : 's'} matched more than one film. Pick the right one, or skip it.</p>
       ${q.slice(0, 15).map((item) => `<div class="review-item">
-        <div><strong>“${esc(item.title)}”</strong>${item.year ? ` (${item.year})` : ''} <span class="muted small">for ${esc(namesOf(item.memberIds))}${item.records.length > 1 ? ` · ${item.records.length} entries` : ''}</span></div>
-        <div class="options">${item.options.map((o) => `<button class="option" data-action="review-pick" data-review="${esc(item.id)}" data-movie="${o.id}">${posterHtml(o, 'w92')}<span>${esc(o.title)}${o.year ? ` (${o.year})` : ''}</span></button>`).join('')}
+        <div><strong>“${esc(item.title)}”</strong>${item.year ? ` (${esc(item.year)})` : ''} <span class="muted small">for ${esc(namesOf(item.memberIds))}${item.records.length > 1 ? ` · ${item.records.length} entries` : ''}</span></div>
+        <div class="options">${item.options.map((o) => `<button class="option" data-action="review-pick" data-review="${esc(item.id)}" data-movie="${esc(o.id)}">${posterHtml(o, 'w92')}<span>${esc(o.title)}${o.year ? ` (${esc(o.year)})` : ''}</span></button>`).join('')}
         <button class="btn small" data-action="review-skip" data-review="${esc(item.id)}">None of these</button></div></div>`).join('')}
       ${q.length > 15 ? `<p class="hint">${q.length - 15} more after these.</p>` : ''}
     </section>`;
@@ -817,7 +830,7 @@
           ${select('country', Object.entries(E.COUNTRIES), country())}</div>
         <h3 style="margin-top:1rem">Your streaming services</h3>
         ${keys.tmdb ? (providers.length
-          ? `<div class="form-grid">${providers.map((p) => `<label class="check"><input type="checkbox" ${st.services.map(Number).includes(Number(p.id)) ? 'checked' : ''} data-change="service-toggle" data-id="${p.id}" data-name="${esc(p.name)}"> ${esc(p.name)}</label>`).join('')}</div>`
+          ? `<div class="form-grid">${providers.map((p) => `<label class="check"><input type="checkbox" ${st.services.map(Number).includes(Number(p.id)) ? 'checked' : ''} data-change="service-toggle" data-id="${esc(p.id)}" data-name="${esc(p.name)}"> ${esc(p.name)}</label>`).join('')}</div>`
           : '<div class="btn-row"><button class="btn" data-action="load-services">Load services for my country</button></div>')
           : '<p class="muted">Add a TMDB key first.</p>'}
         <label class="check" style="margin-top:0.75rem"><input type="checkbox" ${st.onlyMyServices ? 'checked' : ''} data-change="setting" data-field="onlyMyServices"> Only suggest films streaming on our services</label>
@@ -826,7 +839,7 @@
       <section class="panel"><h2>Suggestions</h2>
         <span class="control-label">“New” means</span>
         ${radio('newMeans', 'everyone', 'New to everyone watching', st.newMeans !== 'most')}
-        ${radio('newMeans', 'most', 'New to most of us (one person having seen it is fine)', st.newMeans === 'most')}
+        ${radio('newMeans', 'most', 'New to most of us (fine if one person watching has seen it)', st.newMeans === 'most')}
         <div class="form-grid" style="margin-top:0.75rem">
           <div class="field"><label for="set-mixShare">In “Mix”, favourites make up</label>${select('mixShare', [[0.2, '20%'], [0.3, '30%'], [0.4, '40%'], [0.5, '50%'], [0.6, '60%']], st.mixShare)}</div>
           <div class="field"><label for="set-strictness">Avoiding films someone would dislike</label>${select('strictness', [['relaxed', 'Relaxed'], ['normal', 'Normal'], ['strict', 'Strict']], st.strictness)}</div>
@@ -959,7 +972,15 @@
       const a = memberIdsFor(job, r);
       if (a.ids.length) assigned.push({ r, ids: a.ids, together: a.together });
     }
-    if (!assigned.length) { toast('Choose who watched first.'); return; }
+    if (!assigned.length) {
+      job.step = 'people';
+      job.error = job.records.length
+        ? 'Nothing to add: choose who watched (every profile is set to “Skip”).'
+        : 'No played films were found for the people chosen.';
+      render();
+      return;
+    }
+    job.error = null;
     job.step = 'working';
     job.label = 'Looking up films';
     job.done = 0;
@@ -1200,6 +1221,18 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
+  // A backup is untrusted input: keep only films with numeric IDs, and numeric years.
+  function cleanMovies(raw) {
+    const out = {};
+    Object.values(raw).forEach((m) => {
+      const id = Number(m && m.id);
+      if (!m || !Number.isFinite(id)) return;
+      const year = Number(m.year);
+      out[id] = Object.assign({}, m, { id, title: String(m.title || ''), year: Number.isFinite(year) && year > 0 ? year : null });
+    });
+    return out;
+  }
+
   async function importBackup(file) {
     try {
       const data = JSON.parse(await file.text());
@@ -1208,7 +1241,8 @@
       state = Object.assign(defaultState(), data.state);
       state.prefs = Object.assign(defaultState().prefs, data.state.prefs || {});
       state.settings = Object.assign(defaultState().settings, data.state.settings || {});
-      movies = data.movies || {};
+      movies = cleanMovies(data.movies || {});
+      state.history.forEach((h) => { h.movieId = Number(h.movieId); });
       save();
       toast('Backup restored.');
       ui.tab = 'tonight';
@@ -1440,6 +1474,10 @@
       state.dismissed = state.dismissed.filter((d) => d.memberIds.length);
       state.prefs.viewerIds = state.prefs.viewerIds.filter((id) => id !== m.id);
       if (state.prefs.leanTo === m.id) state.prefs.leanTo = null;
+      state.pending.forEach((p) => { p.viewerIds = p.viewerIds.filter((id) => id !== m.id); delete p.thumbs[m.id]; });
+      state.pending = state.pending.filter((p) => p.viewerIds.length);
+      state.reviewQueue.forEach((r) => { r.memberIds = r.memberIds.filter((id) => id !== m.id); });
+      state.reviewQueue = state.reviewQueue.filter((r) => r.memberIds.length);
       save();
       render();
     },
@@ -1509,6 +1547,11 @@
     async 'job-people'() {
       const job = ui.job;
       if (!job.profiles.length && !job.who.length) { toast('Choose who watched first.'); return; }
+      if (job.profiles.length && job.profiles.every((p) => job.profileMap[p] === 'skip')) {
+        job.error = 'Every profile is set to “Skip”. Choose who at least one of them is.';
+        render();
+        return;
+      }
       if (job.source === 'jellyfin' || job.source === 'plex') {
         job.step = 'working';
         job.label = 'Getting history from your server';

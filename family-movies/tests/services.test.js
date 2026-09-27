@@ -119,6 +119,21 @@ test('matchRecords: TMDB id, IMDb id and title search; groups repeats of the sam
   assert.equal(out.notFound.length, 1);
 });
 
+test('matchRecords: full title first, then the split "title + year" fallback', async () => {
+  const films = [
+    { id: 464052, title: 'Wonder Woman 1984', release_date: '2020-12-16', vote_count: 8000 },
+    { id: 297762, title: 'Wonder Woman', release_date: '2017-05-30', vote_count: 20000 },
+    { id: 109445, title: 'Frozen', release_date: '2013-11-20', vote_count: 16000 },
+    { id: 44363, title: 'Frozen', release_date: '2010-02-05', vote_count: 900 },
+  ];
+  const tmdb = {
+    search: async (title, year) => ({ results: films.filter((f) => f.title.toLowerCase().includes(title.toLowerCase()) && (!year || f.release_date.startsWith(String(year)))) }),
+  };
+  const I = require('../js/importers.js');
+  const out = await S.matchRecords(I.parseTitleList('Wonder Woman 1984\nFrozen 2013'), { tmdb });
+  assert.deepEqual(out.matched.map((m) => m.movieId), [464052, 109445]);
+});
+
 test('matchRecords in demo mode searches the bundled film list', async () => {
   const catalog = [{ id: 12, title: 'Finding Nemo', year: 2003, votes: 19000 }, { id: 10681, title: 'WALL·E', year: 2008, votes: 19000 }];
   const out = await S.matchRecords([{ title: 'WALL-E' }, { title: 'finding nemo' }, { title: 'Jaws' }], { catalog });

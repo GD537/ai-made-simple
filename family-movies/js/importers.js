@@ -110,7 +110,7 @@
   function parseDate(s, order) {
     const str = String(s || '').trim();
     if (!str) return null;
-    let m = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(str);
+    let m = /^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/.exec(str);
     if (m) return validYmd(+m[1], +m[2], +m[3]);
     m = /^(\d{1,2})[/.\-](\d{1,2})[/.\-](\d{2,4})\b/.exec(str);
     if (m) {
@@ -119,8 +119,10 @@
       const y = fullYear(m[3]);
       return order === 'MDY' ? validYmd(y, a, b) : validYmd(y, b, a);
     }
-    const t = Date.parse(str);
-    return isNaN(t) ? null : new Date(t).toISOString().slice(0, 10);
+    // "Jan 5, 2023" and similar: read as a local calendar date (not via UTC, which
+    // would shift it back a day in Australia).
+    const d = new Date(str);
+    return isNaN(d.getTime()) ? null : validYmd(d.getFullYear(), d.getMonth() + 1, d.getDate());
   }
 
   // Looks for a day above 12 to settle whether dates are day-first or month-first.
@@ -299,7 +301,7 @@
   function guessMapping(headers) {
     const find = (re) => headers.find((h) => re.test(h)) || '';
     return {
-      title: find(/^(title|name|film|movie)$/i) || find(/title|name|film|movie/i),
+      title: find(/^(title|name|film|movie)$/i) || find(/title|name|film|movie/i) || headers[0] || '',
       year: find(/^(year|release year)$/i),
       date: find(/watched|date|when|viewed/i),
       rating: find(/rating|score|stars|thumbs|liked?/i),
@@ -314,10 +316,11 @@
     let scale = mapping.scale || 'auto';
     if (mapping.rating && scale === 'auto') {
       const nums = rows.map((r) => toNumber(r[mapping.rating])).filter((n) => n != null);
-      if (!nums.length) scale = 'thumbs';
+      // A column of only -1/0/1 is like/dislike, not a star rating.
+      if (!nums.length || nums.every((n) => n === -1 || n === 0 || n === 1)) scale = 'thumbs';
       else {
         const max = Math.max.apply(null, nums);
-        scale = max <= 1 && Math.min.apply(null, nums) < 0 ? 'thumbs' : max <= 5 ? '5' : max <= 10 ? '10' : '100';
+        scale = max <= 5 ? '5' : max <= 10 ? '10' : '100';
       }
     }
     return rows.filter((r) => (r[mapping.title] || '').trim()).map((r) => {
@@ -333,15 +336,23 @@
     });
   }
 
-  // "Moana (2016)", "1. Toy Story", "- Frozen 2013" ... one per line.
+  /**
+   * "Moana (2016)", "1. Toy Story", "Coco, 2017" ... one per line.
+   * A bare trailing year is ambiguous ("Frozen 2013" vs "Wonder Woman 1984"), so the
+   * full text stays the title and the split version is kept as a fallback to try.
+   */
   function parseTitleList(text) {
     return String(text || '').split(/\r?\n/).map((line) => {
-      let t = line.replace(/^\s*(?:[-*•]|\d+[.)])\s*/, '').trim();
+      const t = line.replace(/^\s*(?:[-*•]|\d+[.)])\s*/, '').trim();
       if (!t) return null;
-      let year = null;
-      const m = /^(.*?)[\s,]*[([]?((?:19|20)\d{2})[)\]]?\s*$/.exec(t);
-      if (m && m[1].trim()) { t = m[1].trim(); year = Number(m[2]); }
-      return { source: 'list', title: t, year, completion: null };
+      const marked = /^(.*?)\s*(?:\(((?:19|20)\d{2})\)|\[((?:19|20)\d{2})\]|[,–—-]\s*((?:19|20)\d{2}))\s*$/.exec(t);
+      if (marked && marked[1].trim()) {
+        return { source: 'list', title: marked[1].trim(), year: Number(marked[2] || marked[3] || marked[4]), completion: null };
+      }
+      const rec = { source: 'list', title: t, year: null, completion: null };
+      const bare = /^(.*\S)\s+((?:19|20)\d{2})$/.exec(t);
+      if (bare) rec.alt = { title: bare[1], year: Number(bare[2]) };
+      return rec;
     }).filter(Boolean);
   }
 
@@ -352,8 +363,8 @@
     return (items || []).filter((i) => i && i.type === 'movie' && i.movie).map((i) => ({
       source: 'trakt',
       title: i.movie.title,
-      year: i.movie.year || null,
-      tmdbId: (i.movie.ids && i.movie.ids.tmdb) || null,
+      year: toNumber(i.movie.year),
+      tmdbId: toNumber(i.movie.ids && i.movie.ids.tmdb),
       imdbId: (i.movie.ids && i.movie.ids.imdb) || null,
       watchedOn: i.watched_at ? i.watched_at.slice(0, 10) : null,
       completion: 0.9,
@@ -364,8 +375,8 @@
     return (items || []).filter((i) => i && i.type === 'movie' && i.movie).map((i) => ({
       source: 'trakt',
       title: i.movie.title,
-      year: i.movie.year || null,
-      tmdbId: (i.movie.ids && i.movie.ids.tmdb) || null,
+      year: toNumber(i.movie.year),
+      tmdbId: toNumber(i.movie.ids && i.movie.ids.tmdb),
       imdbId: (i.movie.ids && i.movie.ids.imdb) || null,
       thumbs: thumbsFromScore(i.rating, 10),
       ratedOn: i.rated_at ? i.rated_at.slice(0, 10) : null,
@@ -380,8 +391,8 @@
       return {
         source: 'jellyfin',
         title: it.Name,
-        year: it.ProductionYear || null,
-        tmdbId: ids.Tmdb ? Number(ids.Tmdb) : null,
+        year: toNumber(it.ProductionYear),
+        tmdbId: toNumber(ids.Tmdb),
         imdbId: ids.Imdb || null,
         watchedOn: ud.LastPlayedDate ? ud.LastPlayedDate.slice(0, 10) : null,
         completion: ud.Played ? 1 : ud.PlayedPercentage != null ? ud.PlayedPercentage / 100 : null,
@@ -396,7 +407,7 @@
     return items.filter((m) => m.type === 'movie').map((m) => ({
       source: 'plex',
       title: m.title,
-      year: m.year || (m.originallyAvailableAt ? Number(m.originallyAvailableAt.slice(0, 4)) : null),
+      year: toNumber(m.year) || (m.originallyAvailableAt ? toNumber(String(m.originallyAvailableAt).slice(0, 4)) : null),
       watchedOn: m.viewedAt ? new Date(m.viewedAt * 1000).toISOString().slice(0, 10) : null,
       completion: 0.9,
       ratingKey: m.ratingKey,
@@ -406,7 +417,7 @@
 
   function parsePlexGuids(json) {
     const meta = json && json.MediaContainer && json.MediaContainer.Metadata && json.MediaContainer.Metadata[0];
-    const out = { tmdbId: null, imdbId: null, year: (meta && meta.year) || null };
+    const out = { tmdbId: null, imdbId: null, year: toNumber(meta && meta.year) };
     ((meta && meta.Guid) || []).forEach((g) => {
       const m = /^(tmdb|imdb):\/\/(.+)$/.exec(g.id || '');
       if (m && m[1] === 'tmdb') out.tmdbId = Number(m[2]);
